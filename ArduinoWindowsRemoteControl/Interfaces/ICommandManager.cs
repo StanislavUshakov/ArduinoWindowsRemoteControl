@@ -15,12 +15,12 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// Add associated command
         /// </summary>
         /// <param name="applicationCommand">Command to be added</param>
-        public void AddApplicationCommand(IApplicationCommand applicationCommand);
+        void AddApplicationCommand(IApplicationCommand applicationCommand);
 
         /// <summary>
         /// Process remote command
         /// </summary>
         /// <param name="command">Received command</param>
-        public void DispatchCommand(RemoteCommand command);
+        void DispatchCommand(RemoteCommand command);
     }
 }
