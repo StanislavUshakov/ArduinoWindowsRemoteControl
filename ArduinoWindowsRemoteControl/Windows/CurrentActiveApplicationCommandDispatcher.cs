@@ -26,7 +26,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         public CurrentActiveApplicationCommandDispatcher()
         {
-            _applicationCommandsMapping = new Dictionary<string, Dictionary<RemoteCommand, IApplicationCommand>>();
+            _applicationCommandsMapping = new Dictionary<string, Dictionary<RemoteCommand, IApplicationCommand>>(StringComparer.InvariantCultureIgnoreCase);
         }
 
         #endregion

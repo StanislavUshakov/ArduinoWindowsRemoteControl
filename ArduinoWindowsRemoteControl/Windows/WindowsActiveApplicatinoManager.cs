@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ArduinoWindowsRemoteControl.Windows
 {
     /// <summary>
-    /// Represents manager thta gets remotes command and processe it
+    /// Represents manager that gets remotes command and processe it
     /// </summary>
     public class WindowsActiveApplicatinoManager : ICommandManager
     {
@@ -16,15 +16,18 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         private IApplicationCommandFactory _appCommandFactory;
         private ICommandDispatcher _commandDispatcher;
+        private IArduinoDevice _arduinoDevice;
 
         #endregion
 
         #region Constructor
 
-        public WindowsActiveApplicatinoManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher)
+        public WindowsActiveApplicatinoManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IArduinoDevice arduinoDevice)
         {
             _appCommandFactory = appCommandFactory;
             _commandDispatcher = commandDispatcher;
+            _arduinoDevice = arduinoDevice;
+            _arduinoDevice.OnCommandReceived += _commandDispatcher.DispatchCommand;
         }
 
         #endregion
@@ -34,9 +37,9 @@ namespace ArduinoWindowsRemoteControl.Windows
             return _commandDispatcher.AddApplicationCommand(_appCommandFactory.Create(applicationName, remoteCommand, command));
         }
 
-        public Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName)
+        public List<IApplicationCommand> GetCommandsForApplication(string applicationName)
         {
-            return _commandDispatcher.GetCommandsForApplication(applicationName);
+            return _commandDispatcher.GetCommandsForApplication(applicationName).Values.ToList();
         }
 
         public List<string> GetApplicationNames()

@@ -1,4 +1,5 @@
 ﻿using ArduinoWindowsRemoteControl.Interfaces;
+using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Unity;
 using Microsoft.Practices.Unity;
 using System;
@@ -15,12 +16,18 @@ namespace ArduinoWindowsRemoteControl
 {
     public partial class MainForm : Form
     {
-        [Dependency]
-        public IApplicationCommandFactory Factory { get; set; }
+        public ICommandManager CommandManager { get; set; }
 
-        public MainForm()
+        public CommandUILayout UILayout { get; set; }
+
+        public MainForm(ICommandManager commandManager)
         {
             InitializeComponent();
+            CommandManager = commandManager;
+            UILayout = new CommandUILayout(panel1);
+            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Play, "A,A,A");
+            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOn, "B,B,B");
+            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication("WinWord"));
         }
 
         private void button1_Click(object sender, EventArgs e)

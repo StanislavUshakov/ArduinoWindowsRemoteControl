@@ -1,4 +1,5 @@
-﻿using ArduinoWindowsRemoteControl.Interfaces;
+﻿using ArduinoWindowsRemoteControl.Arduino;
+using ArduinoWindowsRemoteControl.Interfaces;
 using ArduinoWindowsRemoteControl.Windows;
 using Microsoft.Practices.Unity;
 using System;
@@ -19,7 +20,8 @@ namespace ArduinoWindowsRemoteControl.Unity
             container.RegisterType<ICommandFactory, WindowsKeyboardCommandFactory>();
             container.RegisterType<IApplicationCommandFactory, WindowsKeyboardApplicationCommandFactory>();
             container.RegisterType<ICommandDispatcher, CurrentActiveApplicationCommandDispatcher>();
-            container.RegisterType<ICommandManager, WindowsActiveApplicatinoManager>();
+            container.RegisterType<ICommandManager, WindowsActiveApplicatinoManager>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IArduinoDevice, StubArduinoDevice>();
             container.RegisterType<MainForm>();
 
             return container;
