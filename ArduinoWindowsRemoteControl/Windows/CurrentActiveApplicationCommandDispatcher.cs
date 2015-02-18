@@ -33,7 +33,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Public Methods
 
-        public override bool AddApplicationCommand(IApplicationCommand applicationCommand)
+        public bool AddApplicationCommand(IApplicationCommand applicationCommand)
         {
             if (_applicationCommandsMapping.ContainsKey(applicationCommand.ApplicationName))
             {
@@ -62,7 +62,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             }
         }
 
-        public override void DispatchCommand(RemoteCommand command)
+        public void DispatchCommand(RemoteCommand command)
         {
             string currentActiveAppName = WinAPIHelpers.GetActiveApplicationName();
 
@@ -76,7 +76,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             commandsForApp[command].Do();
         }
 
-        public override Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName)
+        public Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName)
         {
             if (_applicationCommandsMapping.ContainsKey(applicationName))
             {
@@ -86,6 +86,11 @@ namespace ArduinoWindowsRemoteControl.Windows
             {
                 return new Dictionary<RemoteCommand, IApplicationCommand>();
             }
+        }
+
+        public List<string> GetApplicationNames()
+        {
+            return _applicationCommandsMapping.Keys.ToList();
         }
 
         #endregion

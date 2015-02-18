@@ -30,7 +30,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Public Methods
 
-        public override void Do()
+        public void Do()
         {
             WinAPIHelpers.SendKeyboardMessage(_keyboardcommand);
         }

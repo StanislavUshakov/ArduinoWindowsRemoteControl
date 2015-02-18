@@ -30,5 +30,11 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// <param name="applicationName">Application name</param>
         /// <returns>Mapping for remote commands for specific application</returns>
         Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName);
+
+        /// <summary>
+        /// Return list of application names that are associated with commands
+        /// </summary>
+        /// <returns>List of strings - names of applications</returns>
+        List<string> GetApplicationNames();
     }
 }
