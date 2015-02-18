@@ -58,6 +58,7 @@
     <Compile Include="Interfaces\IApplicationCommand.cs" />
     <Compile Include="Interfaces\IArduinoDevice.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\ICommandManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
