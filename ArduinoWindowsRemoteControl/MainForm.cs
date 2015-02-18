@@ -27,12 +27,25 @@ namespace ArduinoWindowsRemoteControl
             UILayout = new CommandUILayout(panel1, mainTooltip);
             CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Play, "A,A,A");
             CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOn, "B,B,B");
-            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication("WinWord"));
+            UpdateCommandsListView("WinWord");
+        }
+
+        private void UpdateCommandsListView(string appName)
+        {
+            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication(appName), remove_Click);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
+        }
+
+        private void remove_Click(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var command = button.Tag as IApplicationCommand;
+            CommandManager.DeleteApplicationCommand(command);
+            UpdateCommandsListView("WinWord");
         }
     }
 }

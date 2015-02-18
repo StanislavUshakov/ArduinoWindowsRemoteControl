@@ -32,6 +32,8 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #endregion
 
+        #region Public Methods
+
         public bool AddNewCommandForApplication(string applicationName, RemoteCommand remoteCommand, string command)
         {
             return _commandDispatcher.AddApplicationCommand(_appCommandFactory.Create(applicationName, remoteCommand, command));
@@ -51,5 +53,7 @@ namespace ArduinoWindowsRemoteControl.Windows
         {
             return _commandDispatcher.GetApplicationNames();
         }
+
+        #endregion
     }
 }

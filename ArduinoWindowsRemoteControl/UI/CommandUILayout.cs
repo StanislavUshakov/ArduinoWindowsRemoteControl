@@ -38,18 +38,22 @@ namespace ArduinoWindowsRemoteControl.UI
 
         #region Public Methods
 
-        public void ShowCommandsForApplication(IEnumerable<IApplicationCommand> commands)
+        public void ShowCommandsForApplication(IEnumerable<IApplicationCommand> commands, EventHandler removeHandler)
         {
             int y = _verticalStart;
             var font = new Font(FontFamily.GenericMonospace, _fontSize);
+
+            _panel.Controls.Clear();
+
             foreach (var command in commands)
             {
-                Button b = new Button();
-                b.Tag = command;
-                b.Text = "bt" + command.ApplicationName + "-" + command.Command + "-" + command.RemoteCommand;
-                b.Top = y;
-                b.Left = _leftStart + _firstColumnWidth + 2 * _space + _secondColumnWidth;
-                b.Font = font;
+                Button btRemove = new Button();
+                btRemove.Tag = command;
+                btRemove.Text = "bt" + command.ApplicationName + "-" + command.Command + "-" + command.RemoteCommand;
+                btRemove.Top = y;
+                btRemove.Left = _leftStart + _firstColumnWidth + 2 * _space + _secondColumnWidth;
+                btRemove.Font = font;
+                btRemove.Click += removeHandler;
 
                 Label lbRemote = new Label();
                 lbRemote.Text = "Remote Command: " + command.RemoteCommand.ToString();
@@ -66,7 +70,7 @@ namespace ArduinoWindowsRemoteControl.UI
                 lbCommand.Font = font;
                 _toolTip.SetToolTip(lbCommand, command.Command.ToString());
 
-                _panel.Controls.Add(b);
+                _panel.Controls.Add(btRemove);
                 _panel.Controls.Add(lbRemote);
                 _panel.Controls.Add(lbCommand);
 
