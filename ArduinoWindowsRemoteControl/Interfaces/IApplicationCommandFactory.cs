@@ -9,7 +9,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// <summary>
     /// Factory for creating IApplicationCommand objects
     /// </summary>
-    interface IApplicationCommandFactory
+    public interface IApplicationCommandFactory
     {
         /// <summary>
         /// Creates an IApplicationCommand object - feedback for special remote command

@@ -10,7 +10,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// Represents simple association that connects application, remote command and feedback to this command.
     /// If ApplicationName is null - this is a default behaviour.
     /// </summary>
-    interface IApplicationCommand
+    public interface IApplicationCommand
     {
         /// <summary>
         /// Name of the application
@@ -20,7 +20,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// <summary>
         /// Remote command
         /// </summary>
-        RemoteCommand CommandType { get; }
+        RemoteCommand RemoteCommand { get; }
 
         /// <summary>
         /// Command to be executed

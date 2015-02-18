@@ -15,6 +15,9 @@ namespace ArduinoWindowsRemoteControl
 {
     public partial class MainForm : Form
     {
+        [Dependency]
+        public IApplicationCommandFactory Factory { get; set; }
+
         public MainForm()
         {
             InitializeComponent();

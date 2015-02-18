@@ -19,7 +19,7 @@ namespace ArduinoWindowsRemoteControl
             var unityContainer = UnityInitializer.ConfigureUnity();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(unityContainer.Resolve<MainForm>());
         }
     }
 }
