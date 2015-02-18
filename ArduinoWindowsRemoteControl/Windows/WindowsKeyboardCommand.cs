@@ -32,6 +32,11 @@ namespace ArduinoWindowsRemoteControl.Windows
             WinAPIHelpers.SendKeyboardMessage(_keyboardcommand);
         }
 
+        public override string ToString()
+        {
+            return _keyboardcommand;
+        }
+
         #endregion
     }
 }

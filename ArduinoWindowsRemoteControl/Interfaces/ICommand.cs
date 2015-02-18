@@ -9,7 +9,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// <summary>
     /// Represents action that can be triggered by the remote control.
     /// </summary>
-    interface ICommand
+    public interface ICommand
     {
         /// <summary>
         /// Execute command

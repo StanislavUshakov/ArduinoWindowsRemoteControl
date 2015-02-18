@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ArduinoWindowsRemoteControl.Interfaces;
+using ArduinoWindowsRemoteControl.Unity;
+using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

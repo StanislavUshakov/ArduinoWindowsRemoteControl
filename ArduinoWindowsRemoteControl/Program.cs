@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ArduinoWindowsRemoteControl.Unity;
+using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace ArduinoWindowsRemoteControl
         [STAThread]
         static void Main()
         {
+            var unityContainer = UnityInitializer.ConfigureUnity();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
