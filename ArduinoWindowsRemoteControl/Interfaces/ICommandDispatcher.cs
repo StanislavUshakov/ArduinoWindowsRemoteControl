@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ArduinoWindowsRemoteControl.Interfaces
 {
     /// <summary>
-    /// 
+    /// Dispatches the received remote command
     /// </summary>
     interface ICommandDispatcher
     {

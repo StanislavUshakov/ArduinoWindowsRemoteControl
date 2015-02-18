@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace ArduinoWindowsRemoteControl.Interfaces
 {
+    public static class IApplicationCommandConstants
+    {
+        /// <summary>
+        /// This application name represents default commands - when there is no
+        /// command for specific application
+        /// </summary>
+        public const string DEFAULT_APPLICATION = "";
+    }
+
+
     /// <summary>
     /// Represents simple association that connects application, remote command and feedback to this command.
     /// If ApplicationName is null - this is a default behaviour.

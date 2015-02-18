@@ -65,12 +65,19 @@ namespace ArduinoWindowsRemoteControl.Windows
         public void DispatchCommand(RemoteCommand command)
         {
             string currentActiveAppName = WinAPIHelpers.GetActiveApplicationName();
+            Dictionary<RemoteCommand, IApplicationCommand> commandsForApp = null;
 
-            if (!_applicationCommandsMapping.ContainsKey(currentActiveAppName))
-                return;
+            if (_applicationCommandsMapping.ContainsKey(currentActiveAppName))
+            {
+                commandsForApp = _applicationCommandsMapping[currentActiveAppName];
+            }
+            else if (_applicationCommandsMapping.ContainsKey(IApplicationCommandConstants.DEFAULT_APPLICATION))
+            {
+                commandsForApp = _applicationCommandsMapping[IApplicationCommandConstants.DEFAULT_APPLICATION];
+            }
 
-            var commandsForApp = _applicationCommandsMapping[currentActiveAppName];
-            if (!commandsForApp.ContainsKey(command))
+
+            if (commandsForApp == null || !commandsForApp.ContainsKey(command))
                 return;
 
             commandsForApp[command].Do();
