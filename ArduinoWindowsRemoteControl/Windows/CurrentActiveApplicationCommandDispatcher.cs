@@ -37,7 +37,7 @@ namespace ArduinoWindowsRemoteControl.Windows
         {
             if (_applicationCommandsMapping.ContainsKey(applicationCommand.ApplicationName))
             {
-                //there is a commands for this app
+                //there are commands for this app
                 var commandsForApp = _applicationCommandsMapping[applicationCommand.ApplicationName];
                 if (commandsForApp.ContainsKey(applicationCommand.RemoteCommand))
                 {
@@ -58,6 +58,30 @@ namespace ArduinoWindowsRemoteControl.Windows
                 //no commands for this app
                 _applicationCommandsMapping.Add(applicationCommand.ApplicationName, 
                     new Dictionary<RemoteCommand, IApplicationCommand> { { applicationCommand.RemoteCommand, applicationCommand } });
+                return false;
+            }
+        }
+
+        public bool DeleteApplicationCommand(IApplicationCommand applicationCommand)
+        {
+            if (_applicationCommandsMapping.ContainsKey(applicationCommand.ApplicationName))
+            {
+                //there are commands for this app
+                var commandsForApp = _applicationCommandsMapping[applicationCommand.ApplicationName];
+                if (commandsForApp.ContainsKey(applicationCommand.RemoteCommand))
+                {
+                    //remove
+                    commandsForApp.Remove(applicationCommand.RemoteCommand);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                //no commands for this app
                 return false;
             }
         }

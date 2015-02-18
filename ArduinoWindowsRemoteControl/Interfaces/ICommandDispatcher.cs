@@ -19,6 +19,13 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         bool AddApplicationCommand(IApplicationCommand applicationCommand);
 
         /// <summary>
+        /// Delete provided IApplicationCommand object
+        /// </summary>
+        /// <param name="applicationCommand">IApplicationCommand object to be deleted</param>
+        /// <returns>True, if was deleted; False, if there was no this IApplicationCommand</returns>
+        bool DeleteApplicationCommand(IApplicationCommand applicationCommand);
+
+        /// <summary>
         /// Process remote command
         /// </summary>
         /// <param name="command">Received command</param>

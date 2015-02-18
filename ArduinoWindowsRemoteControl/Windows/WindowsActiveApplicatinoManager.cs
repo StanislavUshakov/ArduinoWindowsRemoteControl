@@ -37,6 +37,11 @@ namespace ArduinoWindowsRemoteControl.Windows
             return _commandDispatcher.AddApplicationCommand(_appCommandFactory.Create(applicationName, remoteCommand, command));
         }
 
+        public bool DeleteApplicationCommand(IApplicationCommand applicationCommand)
+        {
+            return _commandDispatcher.DeleteApplicationCommand(applicationCommand);
+        }
+
         public List<IApplicationCommand> GetCommandsForApplication(string applicationName)
         {
             return _commandDispatcher.GetCommandsForApplication(applicationName).Values.ToList();
