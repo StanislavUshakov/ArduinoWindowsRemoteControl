@@ -23,5 +23,12 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// </summary>
         /// <param name="command">Received command</param>
         void DispatchCommand(RemoteCommand command);
+
+        /// <summary>
+        /// Return commands for specific application. If no commands for this application - return empty Dictionary
+        /// </summary>
+        /// <param name="applicationName">Application name</param>
+        /// <returns>Mapping for remote commands for specific application</returns>
+        Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName);
     }
 }

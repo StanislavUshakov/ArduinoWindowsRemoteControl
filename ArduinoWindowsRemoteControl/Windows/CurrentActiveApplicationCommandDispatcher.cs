@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace ArduinoWindowsRemoteControl.Windows
 {
-    public class WindowsKeyboardCommandDispatcher : ICommandDispatcher
+    /// <summary>
+    /// Dispacther that sends command to current active application
+    /// </summary>
+    public class CurrentActiveApplicationCommandDispatcher : ICommandDispatcher
     {
         #region Private Fields
 
@@ -21,7 +24,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Constructor
 
-        public WindowsKeyboardCommandDispatcher()
+        public CurrentActiveApplicationCommandDispatcher()
         {
             _applicationCommandsMapping = new Dictionary<string, Dictionary<RemoteCommand, IApplicationCommand>>();
         }
@@ -30,7 +33,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Public Methods
 
-        public bool AddApplicationCommand(IApplicationCommand applicationCommand)
+        public override bool AddApplicationCommand(IApplicationCommand applicationCommand)
         {
             if (_applicationCommandsMapping.ContainsKey(applicationCommand.ApplicationName))
             {
@@ -59,7 +62,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             }
         }
 
-        public void DispatchCommand(RemoteCommand command)
+        public override void DispatchCommand(RemoteCommand command)
         {
             string currentActiveAppName = WinAPIHelpers.GetActiveApplicationName();
 
@@ -71,6 +74,18 @@ namespace ArduinoWindowsRemoteControl.Windows
                 return;
 
             commandsForApp[command].Do();
+        }
+
+        public override Dictionary<RemoteCommand, IApplicationCommand> GetCommandsForApplication(string applicationName)
+        {
+            if (_applicationCommandsMapping.ContainsKey(applicationName))
+            {
+                return _applicationCommandsMapping[applicationName];
+            }
+            else
+            {
+                return new Dictionary<RemoteCommand, IApplicationCommand>();
+            }
         }
 
         #endregion

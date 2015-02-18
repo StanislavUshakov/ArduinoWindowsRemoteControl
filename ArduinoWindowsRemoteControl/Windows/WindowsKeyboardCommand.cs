@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ArduinoWindowsRemoteControl.Windows
 {
+    /// <summary>
+    /// Represents command as sequence of key presses
+    /// </summary>
     public class WindowsKeyboardCommand : ICommand
     {
         #region Private Fields
@@ -27,7 +30,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Public Methods
 
-        public void Do()
+        public override void Do()
         {
             WinAPIHelpers.SendKeyboardMessage(_keyboardcommand);
         }
