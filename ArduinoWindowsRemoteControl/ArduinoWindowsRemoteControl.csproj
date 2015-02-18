@@ -71,6 +71,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\UnityInitializer.cs" />
+    <Compile Include="Windows\WindowsActiveApplicatinoManager.cs" />
     <Compile Include="Windows\WindowsKeyboardApplicationCommand.cs" />
     <Compile Include="Windows\WindowsKeyboardApplicationCommandFactory.cs" />
     <Compile Include="Windows\WindowsKeyboardCommand.cs" />

@@ -9,7 +9,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// <summary>
     /// Dispatches the received remote command
     /// </summary>
-    interface ICommandDispatcher
+    public interface ICommandDispatcher
     {
         /// <summary>
         /// Add associated command

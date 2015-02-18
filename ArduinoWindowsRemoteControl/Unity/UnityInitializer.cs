@@ -19,6 +19,7 @@ namespace ArduinoWindowsRemoteControl.Unity
             container.RegisterType<ICommandFactory, WindowsKeyboardCommandFactory>();
             container.RegisterType<IApplicationCommandFactory, WindowsKeyboardApplicationCommandFactory>();
             container.RegisterType<ICommandDispatcher, CurrentActiveApplicationCommandDispatcher>();
+            container.RegisterType<ICommandManager, WindowsActiveApplicatinoManager>();
             container.RegisterType<MainForm>();
 
             return container;
