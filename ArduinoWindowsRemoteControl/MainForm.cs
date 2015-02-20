@@ -24,9 +24,9 @@ namespace ArduinoWindowsRemoteControl
         {
             InitializeComponent();
             CommandManager = commandManager;
-            UILayout = new CommandUILayout(panel1, mainTooltip);
-            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Play, "A,A,A");
-            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOn, "B,B,B");
+            UILayout = new CommandUILayout(commandListPanel, mainTooltip);
+            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
+            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOnOff, "B,B,B");
             UpdateCommandsListView("WinWord");
         }
 

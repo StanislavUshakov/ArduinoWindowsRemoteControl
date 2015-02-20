@@ -68,6 +68,7 @@ namespace ArduinoWindowsRemoteControl.UI
                 lbCommand.Left = _leftStart + _firstColumnWidth + _space;
                 lbCommand.Width = _secondColumnWidth;
                 lbCommand.Font = font;
+                lbCommand.AutoEllipsis = true;
                 _toolTip.SetToolTip(lbCommand, command.Command.ToString());
 
                 _panel.Controls.Add(btRemove);

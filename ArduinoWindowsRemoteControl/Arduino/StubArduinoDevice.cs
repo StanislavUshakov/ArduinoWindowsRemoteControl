@@ -18,10 +18,10 @@ namespace ArduinoWindowsRemoteControl.Arduino
                     {
                         Thread.Sleep(5000);
                         if (OnCommandReceived != null)
-                            OnCommandReceived(RemoteCommand.Play);
+                            OnCommandReceived(RemoteCommand.PlayPause);
                         Thread.Sleep(5000);
                         if (OnCommandReceived != null)
-                            OnCommandReceived(RemoteCommand.TurnOn);
+                            OnCommandReceived(RemoteCommand.TurnOnOff);
                     }
                 });
         }
