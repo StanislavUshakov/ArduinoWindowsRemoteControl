@@ -50,7 +50,7 @@ namespace ArduinoWindowsRemoteControl.Helpers
             var result = new List<Tuple<string, Enum>>();
             foreach (var enumValue in Enum.GetValues(typeof(T)).Cast<Enum>())
             {
-                if (enumValue.GetType().GetField(enumValue.ToString()).GetAttribute<ReservedAttribute>() == null)
+                if (enumValue.GetType().GetField(enumValue.ToString()).GetAttribute<ReservedAttribute>() != null)
                     continue;
 
                 result.Add(new Tuple<string, Enum>(enumValue.ToDisplayName(), enumValue));

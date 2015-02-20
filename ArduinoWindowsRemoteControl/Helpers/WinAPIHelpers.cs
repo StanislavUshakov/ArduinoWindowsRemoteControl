@@ -73,6 +73,21 @@ namespace ArduinoWindowsRemoteControl.Helpers
             return KeyToVKMapping[key];
         }
 
+        /// <summary>
+        /// Returns string representation for virtual code.
+        /// </summary>
+        /// <param name="keyCode">Virtual code</param>
+        /// <returns>String representation</returns>
+        public static string GetKeyStringForVirtualCode(byte keyCode)
+        {
+            if (KeyToVKMapping.ContainsValue(keyCode))
+            {
+                return KeyToVKMapping.First(kvp => kvp.Value == keyCode).Key;
+            }
+
+            throw new ArgumentException("There is no mapping for this code!");
+        }
+
         private static Dictionary<string, byte> KeyToVKMapping = new Dictionary<string, byte>
         {
             { "CTRL", (byte)Keys.ControlKey },

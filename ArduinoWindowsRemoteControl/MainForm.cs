@@ -20,6 +20,8 @@ namespace ArduinoWindowsRemoteControl
 
         public CommandUILayout UILayout { get; set; }
 
+        private EditCommandForm _editForm;
+
         public MainForm(ICommandManager commandManager)
         {
             InitializeComponent();
@@ -37,7 +39,9 @@ namespace ArduinoWindowsRemoteControl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
+            //ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
+            _editForm = new EditCommandForm();
+            _editForm.ShowDialog();
         }
 
         private void remove_Click(object sender, EventArgs e)
