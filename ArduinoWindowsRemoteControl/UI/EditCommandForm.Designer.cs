@@ -57,10 +57,11 @@
             // cbRemoteCommand
             // 
             this.cbRemoteCommand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRemoteCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbRemoteCommand.FormattingEnabled = true;
             this.cbRemoteCommand.Location = new System.Drawing.Point(12, 29);
             this.cbRemoteCommand.Name = "cbRemoteCommand";
-            this.cbRemoteCommand.Size = new System.Drawing.Size(121, 21);
+            this.cbRemoteCommand.Size = new System.Drawing.Size(121, 24);
             this.cbRemoteCommand.TabIndex = 2;
             // 
             // lbRemoteCommand
@@ -75,9 +76,10 @@
             // 
             // tbCommand
             // 
+            this.tbCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbCommand.Location = new System.Drawing.Point(151, 29);
             this.tbCommand.Name = "tbCommand";
-            this.tbCommand.Size = new System.Drawing.Size(352, 20);
+            this.tbCommand.Size = new System.Drawing.Size(352, 22);
             this.tbCommand.TabIndex = 4;
             this.tbCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCommand_KeyDown);
             this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);

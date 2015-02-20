@@ -145,7 +145,9 @@ namespace ArduinoWindowsRemoteControl.Helpers
             { "8", (byte)Keys.D8 },
             { "9", (byte)Keys.D9 },
             { "0", (byte)Keys.D0 },
-            { "PLAY", (byte)Keys.MediaPlayPause }
+            { "PLAY", (byte)Keys.MediaPlayPause },
+            { "PREVIOUS", (byte)Keys.MediaPreviousTrack },
+            { "NEXT", (byte)Keys.MediaNextTrack }
         };
     }
 }

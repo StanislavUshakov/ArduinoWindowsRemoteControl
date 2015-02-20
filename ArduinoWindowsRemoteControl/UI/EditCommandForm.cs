@@ -20,7 +20,8 @@ namespace ArduinoWindowsRemoteControl.UI
         public EditCommandForm()
         {
             InitializeComponent();
-            cbRemoteCommand.Items.AddRange(EnumHelpers.GetAvailableEnumValues<RemoteCommand>().ToArray());
+            cbRemoteCommand.Items.AddRange(EnumHelpers.GetAvailableEnumValues<RemoteCommand>()
+                .Select(tuple => new ComboboxItem { Text = tuple.Item1, Value = tuple.Item2 }).ToArray());
         }
 
         private void btCancel_Click(object sender, EventArgs e)
