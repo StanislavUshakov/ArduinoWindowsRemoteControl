@@ -26,7 +26,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         [Description("Mute")]
         Mute,
 
-        [Description("Play/Paus")]
+        [Description("Play/Pause")]
         PlayPause,
 
         [Description("Previous")]

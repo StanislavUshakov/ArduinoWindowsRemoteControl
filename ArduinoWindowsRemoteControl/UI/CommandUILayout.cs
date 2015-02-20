@@ -1,4 +1,5 @@
 ﻿using ArduinoWindowsRemoteControl.Interfaces;
+using ArduinoWindowsRemoteControl.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -49,7 +50,7 @@ namespace ArduinoWindowsRemoteControl.UI
             foreach (var command in commands)
             {
                 Label lbRemote = new Label();
-                lbRemote.Text = "Remote Command: " + command.RemoteCommand.ToString();
+                lbRemote.Text = "Remote Command: " + command.RemoteCommand.ToDisplayName();
                 lbRemote.Top = y + _verticalSpaceLabel;
                 lbRemote.Left = _leftStart;
                 lbRemote.Width = _firstColumnWidth;

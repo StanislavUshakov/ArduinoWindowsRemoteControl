@@ -16,25 +16,29 @@ namespace ArduinoWindowsRemoteControl
 {
     public partial class MainForm : Form
     {
-        public ICommandManager CommandManager { get; set; }
+        #region Private Fields
 
-        public CommandUILayout UILayout { get; set; }
+        private ICommandManager _commandManager;
+
+        private CommandUILayout _UILayout;
 
         private EditCommandForm _editForm;
+
+        #endregion
 
         public MainForm(ICommandManager commandManager)
         {
             InitializeComponent();
-            CommandManager = commandManager;
-            UILayout = new CommandUILayout(commandListPanel, mainTooltip);
-            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
-            CommandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOnOff, "B,B,B");
+            _commandManager = commandManager;
+            _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
+            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
+            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOnOff, "B,B,B");
             UpdateCommandsListView("WinWord");
         }
 
         private void UpdateCommandsListView(string appName)
         {
-            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
+            _UILayout.ShowCommandsForApplication(_commandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
         }
 
         private void btAddNew_Click(object sender, EventArgs e)
@@ -48,7 +52,7 @@ namespace ArduinoWindowsRemoteControl
         {
             var button = sender as Button;
             var command = button.Tag as IApplicationCommand;
-            CommandManager.DeleteApplicationCommand(command);
+            _commandManager.DeleteApplicationCommand(command);
             UpdateCommandsListView("WinWord");
         }
 
