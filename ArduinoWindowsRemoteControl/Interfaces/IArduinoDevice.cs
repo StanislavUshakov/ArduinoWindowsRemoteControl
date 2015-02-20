@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArduinoWindowsRemoteControl.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// </summary>
     public enum RemoteCommand
     {
+        [Reserved]
         [Description("Turn On/Off")]
         TurnOnOff,
 
+        [Reserved]
         [Description("Mode")]
         Mode,
 

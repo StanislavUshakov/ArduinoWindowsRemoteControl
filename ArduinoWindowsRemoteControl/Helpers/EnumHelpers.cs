@@ -8,6 +8,13 @@ using System.Threading.Tasks;
 
 namespace ArduinoWindowsRemoteControl.Helpers
 {
+    #region Reserved Attribute
+
+    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+    public class ReservedAttribute : Attribute { }
+
+    #endregion
+
     public static class EnumHelpers
     {
         /// <summary>
@@ -30,6 +37,26 @@ namespace ArduinoWindowsRemoteControl.Helpers
         public static T GetAttribute<T>(this MemberInfo member)
         {
             return member.GetCustomAttributes(typeof(T), true).Cast<T>().SingleOrDefault();
+        }
+
+        /// <summary>
+        /// Returns a list of pairs: 1 string representation, 2 value
+        /// for all enum values that do not have Reserved attribute
+        /// </summary>
+        /// <typeparam name="T">Enum type</typeparam>
+        /// <returns>List of pairs: 1 string representation, 2 value </returns>
+        public static List<Tuple<string, Enum>> GetAvailableEnumValues<T>()
+        {
+            var result = new List<Tuple<string, Enum>>();
+            foreach (var enumValue in Enum.GetValues(typeof(T)).Cast<Enum>())
+            {
+                if (enumValue.GetType().GetField(enumValue.ToString()).GetAttribute<ReservedAttribute>() == null)
+                    continue;
+
+                result.Add(new Tuple<string, Enum>(enumValue.ToDisplayName(), enumValue));
+            }
+
+            return result;
         }
     }
 }
