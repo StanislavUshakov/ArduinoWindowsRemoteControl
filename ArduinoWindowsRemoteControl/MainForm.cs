@@ -34,10 +34,10 @@ namespace ArduinoWindowsRemoteControl
 
         private void UpdateCommandsListView(string appName)
         {
-            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication(appName), remove_Click);
+            UILayout.ShowCommandsForApplication(CommandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btAddNew_Click(object sender, EventArgs e)
         {
             //ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
             _editForm = new EditCommandForm();
@@ -50,6 +50,12 @@ namespace ArduinoWindowsRemoteControl
             var command = button.Tag as IApplicationCommand;
             CommandManager.DeleteApplicationCommand(command);
             UpdateCommandsListView("WinWord");
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var command = button.Tag as IApplicationCommand;
         }
     }
 }
