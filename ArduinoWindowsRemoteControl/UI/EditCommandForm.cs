@@ -14,7 +14,6 @@ namespace ArduinoWindowsRemoteControl.UI
 {
     public partial class EditCommandForm : Form
     {
-        private List<int> _pressedButtons = new List<int>();
         private bool _isKeyStrokeEnabled = false;
 
         public EditCommandForm()
@@ -28,50 +27,5 @@ namespace ArduinoWindowsRemoteControl.UI
         {
             Close();
         }
-
-        private void tbCommand_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!_pressedButtons.Contains(e.KeyValue))
-            {
-                //key command ended, start new one
-                if (_pressedButtons.Count == 0)
-                {
-                    _isKeyStrokeEnabled = false;
-                }
-
-                if (_isKeyStrokeEnabled)
-                {
-                    tbCommand.Text += "-";
-                }
-                else
-                {
-                    if (tbCommand.Text.Length > 0)
-                        tbCommand.Text += ",";
-                }               
-
-                tbCommand.Text += WinAPIHelpers.GetKeyStringForVirtualCode((byte)e.KeyValue);                
-                tbCommand.SelectionStart = tbCommand.Text.Length;
-                _pressedButtons.Add(e.KeyValue);
-            }
-            else
-            {
-                if (_pressedButtons.Last() == e.KeyValue)
-                {
-                    _isKeyStrokeEnabled = true;
-                }
-            }
-            e.Handled = true;
-        }
-
-        private void tbCommand_KeyUp(object sender, KeyEventArgs e)
-        {
-            _pressedButtons.Remove(e.KeyValue);            
-            e.Handled = true;
-        }
-
-        private void tbCommand_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }        
     }
 }

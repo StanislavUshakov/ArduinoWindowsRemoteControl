@@ -97,6 +97,8 @@ namespace ArduinoWindowsRemoteControl.Helpers
             { "TAB", (byte)Keys.Tab },
             { "LWIN", (byte)Keys.LWin },
             { "RWIN", (byte)Keys.RWin },
+            { "ENTER", (byte)Keys.Enter },
+            { "BACKSPACE", (byte)Keys.Back },
             { "F1", (byte)Keys.F1 },
             { "F2", (byte)Keys.F2 },
             { "F3", (byte)Keys.F3 },

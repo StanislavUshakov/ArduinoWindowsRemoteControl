@@ -32,7 +32,7 @@
             this.btCancel = new System.Windows.Forms.Button();
             this.cbRemoteCommand = new System.Windows.Forms.ComboBox();
             this.lbRemoteCommand = new System.Windows.Forms.Label();
-            this.tbCommand = new System.Windows.Forms.TextBox();
+            this.tbCommand = new ArduinoWindowsRemoteControl.UI.KeyboardCommandTextBox(true);
             this.SuspendLayout();
             // 
             // btSave
@@ -81,9 +81,6 @@
             this.tbCommand.Name = "tbCommand";
             this.tbCommand.Size = new System.Drawing.Size(352, 22);
             this.tbCommand.TabIndex = 4;
-            this.tbCommand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbCommand_KeyDown);
-            this.tbCommand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCommand_KeyPress);
-            this.tbCommand.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbCommand_KeyUp);
             // 
             // EditCommandForm
             // 
@@ -91,12 +88,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 199);
             this.ControlBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Controls.Add(this.tbCommand);
             this.Controls.Add(this.lbRemoteCommand);
             this.Controls.Add(this.cbRemoteCommand);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSave);
-            this.Name = "EditCommandForm";
+            this.Name = "Add Command For";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditCommandForm";
             this.ResumeLayout(false);
