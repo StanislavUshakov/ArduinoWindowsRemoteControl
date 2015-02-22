@@ -14,11 +14,20 @@ namespace ArduinoWindowsRemoteControl.UI
 {
     public partial class EditCommandForm : Form
     {
+        #region Private Fields
+
+        private string _applicationName;
+        private ICommandManager _commandManager;
+        private IApplicationCommand _command;
+
+        #endregion
+
         #region Constructor
 
-        public EditCommandForm()
+        public EditCommandForm(ICommandManager commandManager)
         {
             InitializeComponent();
+            _commandManager = commandManager;
             cbRemoteCommand.Items.AddRange(EnumHelpers.GetAvailableEnumValues<RemoteCommand>()
                 .Select(tuple => new ComboboxItem { Text = tuple.Item1, Value = tuple.Item2 }).ToArray());
         }
@@ -27,8 +36,15 @@ namespace ArduinoWindowsRemoteControl.UI
 
         #region Public Methods
 
-        public void SetCommand(IApplicationCommand command)
+        /// <summary>
+        /// Setup all needed properties.
+        /// </summary>
+        /// <param name="applicationName">For which application command is adding/editing</param>
+        /// <param name="command">Command to be edited or null, if the new command is being added</param>
+        public void SetUp(string applicationName, IApplicationCommand command)
         {
+            _applicationName = applicationName;
+            _command = command;
             if (command != null)
             {
                 SetupFromCommand(command);
@@ -52,14 +68,23 @@ namespace ArduinoWindowsRemoteControl.UI
         {
             tbCommand.IsCommandInput = rbCommandInput.Checked;
         }
-
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            //if we're editing the existing command - delete the previous version
+            if (_command != null)
+            {
+                _commandManager.DeleteApplicationCommand(_command);
+            }
+            _commandManager.AddNewCommandForApplication(_applicationName, (RemoteCommand)(cbRemoteCommand.SelectedItem as ComboboxItem).Value, tbCommand.Text);
+            Close();
+        }
         #endregion
 
         #region Private Methods
 
         private void SetupFromCommand(IApplicationCommand command)
         {
-            Text = "Edit Command For " + command.ApplicationName;
+            Text = "Edit Command For " + _applicationName;
             tbCommand.Text = command.Command.ToString();
             int selectedIndex = -1;
             for (int i = 0; i < cbRemoteCommand.Items.Count; i++)
@@ -76,7 +101,7 @@ namespace ArduinoWindowsRemoteControl.UI
 
         private void SetupDefault()
         {
-            Text = "Add New Command";
+            Text = "Add New Command For " + _applicationName;
             tbCommand.Text = "";
             rbCommandInput.Checked = true;
             cbRemoteCommand.SelectedIndex = -1;

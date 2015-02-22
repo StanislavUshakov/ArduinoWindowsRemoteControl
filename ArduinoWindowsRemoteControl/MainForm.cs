@@ -18,10 +18,9 @@ namespace ArduinoWindowsRemoteControl
     {
         #region Private Fields
 
+        private string _currentAppplicationName;
         private ICommandManager _commandManager;
-
         private CommandUILayout _UILayout;
-
         private EditCommandForm _editForm;
 
         #endregion
@@ -36,7 +35,10 @@ namespace ArduinoWindowsRemoteControl
             _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
             _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
             _editForm = editForm;
-            UpdateCommandsListView("WinWord");
+
+            //temp
+            _currentAppplicationName = "WinWord";
+            UpdateCommandsListView(_currentAppplicationName);
         }
 
         #endregion
@@ -57,7 +59,7 @@ namespace ArduinoWindowsRemoteControl
             var button = sender as Button;
             var command = button.Tag as IApplicationCommand;
             _commandManager.DeleteApplicationCommand(command);
-            UpdateCommandsListView("WinWord");
+            UpdateCommandsListView(_currentAppplicationName);
         }
 
         private void edit_Click(object sender, EventArgs e)
@@ -74,8 +76,9 @@ namespace ArduinoWindowsRemoteControl
         /// <param name="command">Command to be edited or null if new command is being created</param>
         private void OpenEditForm(IApplicationCommand command)
         {
-            _editForm.SetCommand(command);
+            _editForm.SetUp(_currentAppplicationName, command);
             _editForm.ShowDialog();
+            UpdateCommandsListView(_currentAppplicationName);
         }
     }
 }

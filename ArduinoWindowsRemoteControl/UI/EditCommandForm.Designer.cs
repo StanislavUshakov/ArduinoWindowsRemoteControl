@@ -55,6 +55,7 @@
             this.btSave.TabIndex = 3;
             this.btSave.Text = "Save";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
             // btCancel
             // 
