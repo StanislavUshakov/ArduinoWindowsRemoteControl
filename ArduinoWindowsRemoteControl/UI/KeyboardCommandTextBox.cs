@@ -32,14 +32,11 @@ namespace ArduinoWindowsRemoteControl.UI
         #region Constructor
 
         /// <summary>
-        /// Pass initial value for IsCommandInput
         /// Setup all needed event handlers
         /// </summary>
-        /// <param name="isCommandInput">Sets if IsCommandInput setting is on</param>
-        public KeyboardCommandTextBox(bool isCommandInput = false)
+        public KeyboardCommandTextBox()
             : base()
         {
-            IsCommandInput = isCommandInput;
             KeyDown += eventHandler_KeyDown;
             KeyUp += eventHandler_KeyUp;
             KeyPress += eventHandler_KeyPress;

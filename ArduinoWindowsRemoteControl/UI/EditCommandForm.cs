@@ -27,5 +27,10 @@ namespace ArduinoWindowsRemoteControl.UI
         {
             Close();
         }
+
+        private void rbCommandInput_CheckedChanged(object sender, EventArgs e)
+        {
+            tbCommand.IsCommandInput = rbCommandInput.Checked;
+        }
     }
 }
