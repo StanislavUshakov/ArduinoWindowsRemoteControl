@@ -32,7 +32,7 @@ namespace ArduinoWindowsRemoteControl
             _commandManager = commandManager;
             _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
             _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
-            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.TurnOnOff, "B,B,B");
+            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
             UpdateCommandsListView("WinWord");
         }
 
@@ -45,6 +45,7 @@ namespace ArduinoWindowsRemoteControl
         {
             //ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
             _editForm = new EditCommandForm();
+            _editForm.SetCommand(null);
             _editForm.ShowDialog();
         }
 
@@ -60,6 +61,9 @@ namespace ArduinoWindowsRemoteControl
         {
             var button = sender as Button;
             var command = button.Tag as IApplicationCommand;
+            _editForm = new EditCommandForm();
+            _editForm.SetCommand(command);
+            _editForm.ShowDialog();
         }
     }
 }
