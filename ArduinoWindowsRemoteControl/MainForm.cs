@@ -26,15 +26,20 @@ namespace ArduinoWindowsRemoteControl
 
         #endregion
 
-        public MainForm(ICommandManager commandManager)
+        #region Constructor
+
+        public MainForm(ICommandManager commandManager, EditCommandForm editForm)
         {
             InitializeComponent();
             _commandManager = commandManager;
             _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
             _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
             _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
+            _editForm = editForm;
             UpdateCommandsListView("WinWord");
         }
+
+        #endregion
 
         private void UpdateCommandsListView(string appName)
         {
@@ -44,9 +49,7 @@ namespace ArduinoWindowsRemoteControl
         private void btAddNew_Click(object sender, EventArgs e)
         {
             //ArduinoWindowsRemoteControl.Helpers.WinAPIHelpers.SendKeyboardMessage("ALT-TAB-TAB");
-            _editForm = new EditCommandForm();
-            _editForm.SetCommand(null);
-            _editForm.ShowDialog();
+            OpenEditForm(null);
         }
 
         private void remove_Click(object sender, EventArgs e)
@@ -61,7 +64,16 @@ namespace ArduinoWindowsRemoteControl
         {
             var button = sender as Button;
             var command = button.Tag as IApplicationCommand;
-            _editForm = new EditCommandForm();
+            OpenEditForm(command);
+        }
+
+        /// <summary>
+        /// Open form for editing and adding the command.
+        /// If null - adding.
+        /// </summary>
+        /// <param name="command">Command to be edited or null if new command is being created</param>
+        private void OpenEditForm(IApplicationCommand command)
+        {
             _editForm.SetCommand(command);
             _editForm.ShowDialog();
         }
