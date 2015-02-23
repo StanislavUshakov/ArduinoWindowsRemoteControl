@@ -39,9 +39,9 @@
             // btAddNew
             // 
             this.btAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btAddNew.Location = new System.Drawing.Point(5, 269);
+            this.btAddNew.Location = new System.Drawing.Point(584, 269);
             this.btAddNew.Name = "btAddNew";
-            this.btAddNew.Size = new System.Drawing.Size(75, 23);
+            this.btAddNew.Size = new System.Drawing.Size(115, 23);
             this.btAddNew.TabIndex = 0;
             this.btAddNew.Text = "Add new";
             this.mainTooltip.SetToolTip(this.btAddNew, "Test");
@@ -71,10 +71,11 @@
             // cbApplication
             // 
             this.cbApplication.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbApplication.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbApplication.FormattingEnabled = true;
-            this.cbApplication.Location = new System.Drawing.Point(96, 8);
+            this.cbApplication.Location = new System.Drawing.Point(96, 6);
             this.cbApplication.Name = "cbApplication";
-            this.cbApplication.Size = new System.Drawing.Size(165, 21);
+            this.cbApplication.Size = new System.Drawing.Size(193, 24);
             this.cbApplication.TabIndex = 3;
             // 
             // MainForm
@@ -89,7 +90,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Windows Remote Control Center";
             this.ResumeLayout(false);
             this.PerformLayout();
 
