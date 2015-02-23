@@ -1,5 +1,6 @@
 packages
 bin
 obj
+TestResults
 *.suo
 *.user

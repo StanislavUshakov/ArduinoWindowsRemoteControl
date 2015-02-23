@@ -57,6 +57,7 @@
     <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\WinAPIHelpers.cs" />
     <Compile Include="Helpers\WinAPIMethods.cs" />
+    <Compile Include="Interfaces\IApplicationCommandRepository.cs" />
     <Compile Include="Interfaces\IApplicationCommand.cs" />
     <Compile Include="Interfaces\IApplicationCommandFactory.cs" />
     <Compile Include="Interfaces\IArduinoDevice.cs" />
@@ -72,6 +73,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\XMLFileApplicationCommandRepository.cs" />
     <Compile Include="UI\ComboBoxItem.cs" />
     <Compile Include="UI\CommandUILayout.cs" />
     <Compile Include="UI\EditCommandForm.cs">
@@ -119,9 +121,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
