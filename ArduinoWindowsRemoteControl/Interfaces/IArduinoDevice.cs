@@ -15,11 +15,9 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// </summary>
     public enum RemoteCommand
     {
-        [Reserved]
         [Description("Turn On/Off")]
         TurnOnOff,
 
-        [Reserved]
         [Description("Mode")]
         Mode,
 

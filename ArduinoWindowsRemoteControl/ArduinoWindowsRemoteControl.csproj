@@ -84,7 +84,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Unity\UnityInitializer.cs" />
-    <Compile Include="Windows\WindowsActiveApplicatinoManager.cs" />
+    <Compile Include="Windows\WindowsActiveApplicationManager.cs" />
     <Compile Include="Windows\WindowsKeyboardApplicationCommand.cs" />
     <Compile Include="Windows\WindowsKeyboardApplicationCommandFactory.cs" />
     <Compile Include="Windows\WindowsKeyboardCommand.cs" />

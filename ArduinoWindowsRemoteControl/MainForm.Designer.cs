@@ -32,18 +32,20 @@
             this.btAddNew = new System.Windows.Forms.Button();
             this.commandListPanel = new System.Windows.Forms.Panel();
             this.mainTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.btAddNewApplication = new System.Windows.Forms.Button();
             this.lbApplication = new System.Windows.Forms.Label();
             this.cbApplication = new System.Windows.Forms.ComboBox();
+            this.tbNewAppName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btAddNew
             // 
             this.btAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btAddNew.Location = new System.Drawing.Point(584, 269);
+            this.btAddNew.Location = new System.Drawing.Point(525, 269);
             this.btAddNew.Name = "btAddNew";
-            this.btAddNew.Size = new System.Drawing.Size(115, 23);
+            this.btAddNew.Size = new System.Drawing.Size(174, 23);
             this.btAddNew.TabIndex = 0;
-            this.btAddNew.Text = "Add new";
+            this.btAddNew.Text = "Add new command";
             this.mainTooltip.SetToolTip(this.btAddNew, "Test");
             this.btAddNew.UseVisualStyleBackColor = true;
             this.btAddNew.Click += new System.EventHandler(this.btAddNew_Click);
@@ -57,6 +59,18 @@
             this.commandListPanel.Name = "commandListPanel";
             this.commandListPanel.Size = new System.Drawing.Size(694, 224);
             this.commandListPanel.TabIndex = 1;
+            // 
+            // btAddNewApplication
+            // 
+            this.btAddNewApplication.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btAddNewApplication.Location = new System.Drawing.Point(525, 6);
+            this.btAddNewApplication.Name = "btAddNewApplication";
+            this.btAddNewApplication.Size = new System.Drawing.Size(174, 23);
+            this.btAddNewApplication.TabIndex = 5;
+            this.btAddNewApplication.Text = "Add new application";
+            this.mainTooltip.SetToolTip(this.btAddNewApplication, "Test");
+            this.btAddNewApplication.UseVisualStyleBackColor = true;
+            this.btAddNewApplication.Click += new System.EventHandler(this.btAddNewApplication_Click);
             // 
             // lbApplication
             // 
@@ -77,12 +91,23 @@
             this.cbApplication.Name = "cbApplication";
             this.cbApplication.Size = new System.Drawing.Size(193, 24);
             this.cbApplication.TabIndex = 3;
+            this.cbApplication.SelectedIndexChanged += new System.EventHandler(this.cbApplication_SelectedIndexChanged);
+            // 
+            // tbNewAppName
+            // 
+            this.tbNewAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbNewAppName.Location = new System.Drawing.Point(340, 6);
+            this.tbNewAppName.Name = "tbNewAppName";
+            this.tbNewAppName.Size = new System.Drawing.Size(179, 22);
+            this.tbNewAppName.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 313);
+            this.Controls.Add(this.btAddNewApplication);
+            this.Controls.Add(this.tbNewAppName);
             this.Controls.Add(this.cbApplication);
             this.Controls.Add(this.lbApplication);
             this.Controls.Add(this.commandListPanel);
@@ -103,6 +128,8 @@
         private System.Windows.Forms.ToolTip mainTooltip;
         private System.Windows.Forms.Label lbApplication;
         private System.Windows.Forms.ComboBox cbApplication;
+        private System.Windows.Forms.TextBox tbNewAppName;
+        private System.Windows.Forms.Button btAddNewApplication;
     }
 }
 

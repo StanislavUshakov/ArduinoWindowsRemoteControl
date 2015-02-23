@@ -70,6 +70,8 @@ namespace ArduinoWindowsRemoteControl.UI
         }
         private void btSave_Click(object sender, EventArgs e)
         {
+            //TODO: add validation
+
             //if we're editing the existing command - delete the previous version
             if (_command != null)
             {

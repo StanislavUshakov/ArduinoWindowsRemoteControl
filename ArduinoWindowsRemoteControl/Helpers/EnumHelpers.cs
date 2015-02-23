@@ -8,13 +8,6 @@ using System.Threading.Tasks;
 
 namespace ArduinoWindowsRemoteControl.Helpers
 {
-    #region Reserved Attribute
-
-    [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-    public class ReservedAttribute : Attribute { }
-
-    #endregion
-
     public static class EnumHelpers
     {
         /// <summary>
@@ -50,9 +43,6 @@ namespace ArduinoWindowsRemoteControl.Helpers
             var result = new List<Tuple<string, Enum>>();
             foreach (var enumValue in Enum.GetValues(typeof(T)).Cast<Enum>())
             {
-                if (enumValue.GetType().GetField(enumValue.ToString()).GetAttribute<ReservedAttribute>() != null)
-                    continue;
-
                 result.Add(new Tuple<string, Enum>(enumValue.ToDisplayName(), enumValue));
             }
 

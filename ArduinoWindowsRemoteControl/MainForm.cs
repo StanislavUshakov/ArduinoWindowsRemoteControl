@@ -69,6 +69,16 @@ namespace ArduinoWindowsRemoteControl
             var command = button.Tag as IApplicationCommand;
             OpenEditForm(command);
         }
+        private void btAddNewApplication_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbNewAppName.Text))
+            {
+                //if application name is not empty - add and select it
+                cbApplication.Items.Add(tbNewAppName.Text);
+                cbApplication.SelectedIndex = cbApplication.Items.Count - 1;
+                tbNewAppName.Text = "";
+            }
+        }
 
         #endregion
 
@@ -92,5 +102,11 @@ namespace ArduinoWindowsRemoteControl
         }
 
         #endregion
+
+        private void cbApplication_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentAppplicationName = cbApplication.SelectedItem.ToString();
+            UpdateCommandsListView(_currentAppplicationName);
+        }
     }
 }
