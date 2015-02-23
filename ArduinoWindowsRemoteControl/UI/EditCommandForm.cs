@@ -70,7 +70,25 @@ namespace ArduinoWindowsRemoteControl.UI
         }
         private void btSave_Click(object sender, EventArgs e)
         {
-            //TODO: add validation
+            if (cbRemoteCommand.SelectedItem == null)
+            {
+                MessageBox.Show("You must specify Remote Command!");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(tbCommand.Text))
+            {
+                MessageBox.Show("You must specify Keyboard Command!");
+                return;
+            }
+
+            string error = string.Empty;
+            bool isValidCommand = WinAPIHelpers.IsValidKeyboardMessage(tbCommand.Text, out error);
+            if (!isValidCommand)
+            {
+                MessageBox.Show("Keyboard Command is not valid!" + Environment.NewLine + error);
+                return;
+            }
 
             //if we're editing the existing command - delete the previous version
             if (_command != null)

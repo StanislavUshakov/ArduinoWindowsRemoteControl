@@ -32,6 +32,13 @@ namespace ArduinoWindowsRemoteControl.Helpers
         /// <param name="message">Sequence of keys to be sent</param>
         public static void SendKeyboardMessage(string message)
         {
+            string error = string.Empty;
+            bool isValidMessage = IsValidKeyboardMessage(message, out error);
+            if (!isValidMessage)
+            {
+                throw new ArgumentException(error);
+            }
+
             var commands = message.ToUpper().Split(',');
             foreach (string command in commands)
             {
@@ -104,6 +111,33 @@ namespace ArduinoWindowsRemoteControl.Helpers
             }
 
             throw new ArgumentException("There is no mapping for this code!");
+        }
+
+        /// <summary>
+        /// Validation for keyboard message
+        /// </summary>
+        /// <param name="message">Message to be validated</param>
+        /// <param name="error">Out parameter - first error description, if no errors - empty string</param>
+        /// <returns>True, if passed keyboard message is valid; False, otherwise</returns>
+        public static bool IsValidKeyboardMessage(string message, out string error)
+        {
+            var commands = message.ToUpper().Split(',');
+            foreach (string command in commands)
+            {
+                //get separate keys from Ctrl-A-B
+                var keys = command.Split('-').ToList();
+                foreach (var key in keys)
+                {
+                    if (!KeyToVKMapping.ContainsKey(key))
+                    {
+                        error = "There is no mapping for key = " + key;
+                        return false;
+                    }
+                }
+            }
+
+            error = string.Empty;
+            return true;
         }
 
         private static Dictionary<string, byte> KeyToVKMapping = new Dictionary<string, byte>
