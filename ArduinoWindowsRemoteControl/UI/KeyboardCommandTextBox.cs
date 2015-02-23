@@ -71,8 +71,9 @@ namespace ArduinoWindowsRemoteControl.UI
             if (!_pressedButtons.Contains(e.KeyValue))
             {
                 //if it's a multi-key command - print "-"
-                if ((e.Alt || e.Control || e.Shift) &&
-                    e.KeyValue != (int)Keys.Menu && e.KeyValue != (int)Keys.ControlKey && e.KeyValue != (int)Keys.ShiftKey)
+                if (e.Alt && e.KeyValue != (int)Keys.Menu || 
+                    e.Control && e.KeyValue != (int)Keys.ControlKey || 
+                    e.Shift && e.KeyValue != (int)Keys.ShiftKey)
                 {
                     Text += "-";
                 }
