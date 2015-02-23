@@ -70,6 +70,7 @@ namespace ArduinoWindowsRemoteControl.Helpers
                 //wait some time for processing
                 Thread.Sleep(100);
 
+                keysToUp.Reverse();
                 //release key in reversed order
                 foreach (var keyCode in keysToUp)
                 {
