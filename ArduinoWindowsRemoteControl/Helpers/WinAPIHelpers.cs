@@ -36,25 +36,43 @@ namespace ArduinoWindowsRemoteControl.Helpers
             foreach (string command in commands)
             {
                 //get separate keys from Ctrl-A-B
-                var keys = command.Split('-');
+                var keys = command.Split('-').ToList();
+
+                //keys to be released
+                var keysToUp = new List<byte>();
 
                 //send key down event
-                foreach (var key in keys)
+                for (int i = 0; i < keys.Count; i++)
                 {
+                    string key = keys[i];
                     byte keyCode = GetVirtualCodeForKey(key);
-                    WinAPIMethods.keybd_event(keyCode, 
-                        (byte)WinAPIMethods.MapVirtualKey(keyCode, WinAPIMethods.MAPVK_VK_TO_VSC), 
-                        WinAPIMethods.KEYEVENTF_EXTENDEDKEY, 
+
+                    //if this key is contained in the command more than once, release it before the next press
+                    if (keys.IndexOf(key) < i)
+                    {
+                        WinAPIMethods.keybd_event(keyCode,
+                        (byte)WinAPIMethods.MapVirtualKey(keyCode, WinAPIMethods.MAPVK_VK_TO_VSC),
+                        WinAPIMethods.KEYEVENTF_EXTENDEDKEY | WinAPIMethods.KEYEVENTF_KEYUP,
+                        0);
+                        Thread.Sleep(10);
+                    }
+                    else
+                    {
+                        keysToUp.Add(keyCode);
+                    }
+
+                    WinAPIMethods.keybd_event(keyCode,
+                        (byte)WinAPIMethods.MapVirtualKey(keyCode, WinAPIMethods.MAPVK_VK_TO_VSC),
+                        WinAPIMethods.KEYEVENTF_EXTENDEDKEY,
                         0);
                 }
 
                 //wait some time for processing
                 Thread.Sleep(100);
 
-                //relsease key in reversed order
-                foreach (var key in keys.Reverse())
+                //release key in reversed order
+                foreach (var keyCode in keysToUp)
                 {
-                    byte keyCode = GetVirtualCodeForKey(key);
                     WinAPIMethods.keybd_event(keyCode, 
                         (byte)WinAPIMethods.MapVirtualKey(keyCode, WinAPIMethods.MAPVK_VK_TO_VSC), 
                         WinAPIMethods.KEYEVENTF_EXTENDEDKEY | WinAPIMethods.KEYEVENTF_KEYUP, 
