@@ -54,7 +54,6 @@ namespace ArduinoWindowsRemoteControl.Helpers
                         (byte)WinAPIMethods.MapVirtualKey(keyCode, WinAPIMethods.MAPVK_VK_TO_VSC),
                         WinAPIMethods.KEYEVENTF_EXTENDEDKEY | WinAPIMethods.KEYEVENTF_KEYUP,
                         0);
-                        Thread.Sleep(10);
                     }
                     else
                     {

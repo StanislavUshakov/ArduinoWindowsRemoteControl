@@ -63,7 +63,7 @@ namespace ArduinoWindowsRemoteControl.Windows
         private void AddDefaultCommands()
         {
             AddNewCommandForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION, RemoteCommand.TurnOnOff, "ALT-F4");
-            AddNewCommandForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION, RemoteCommand.Mode, "ALT-SHIFT-TAB-TAB");
+            AddNewCommandForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION, RemoteCommand.Mode, "SHIFT-ALT-TAB");
         }
 
         #endregion
