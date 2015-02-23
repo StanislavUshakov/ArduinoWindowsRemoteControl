@@ -32,21 +32,22 @@ namespace ArduinoWindowsRemoteControl
             InitializeComponent();
             _commandManager = commandManager;
             _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
-            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
-            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
             _editForm = editForm;
 
-            //temp
-            _currentAppplicationName = "WinWord";
+            //temp init
+            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
+            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
+
+            cbApplication.Items.AddRange(_commandManager.GetApplicationNames().ToArray());
+            cbApplication.SelectedIndex = 0;
+            _currentAppplicationName = cbApplication.Items[0].ToString();
+
             UpdateCommandsListView(_currentAppplicationName);
         }
 
         #endregion
 
-        private void UpdateCommandsListView(string appName)
-        {
-            _UILayout.ShowCommandsForApplication(_commandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
-        }
+        #region Private Event Handlers
 
         private void btAddNew_Click(object sender, EventArgs e)
         {
@@ -69,6 +70,10 @@ namespace ArduinoWindowsRemoteControl
             OpenEditForm(command);
         }
 
+        #endregion
+
+        #region Private Methods
+
         /// <summary>
         /// Open form for editing and adding the command.
         /// If null - adding.
@@ -80,5 +85,12 @@ namespace ArduinoWindowsRemoteControl
             _editForm.ShowDialog();
             UpdateCommandsListView(_currentAppplicationName);
         }
+
+        private void UpdateCommandsListView(string appName)
+        {
+            _UILayout.ShowCommandsForApplication(_commandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
+        }
+
+        #endregion
     }
 }
