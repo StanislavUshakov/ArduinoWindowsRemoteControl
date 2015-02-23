@@ -28,6 +28,8 @@ namespace ArduinoWindowsRemoteControl.Windows
             _commandDispatcher = commandDispatcher;
             _arduinoDevice = arduinoDevice;
             _arduinoDevice.OnCommandReceived += _commandDispatcher.DispatchCommand;
+
+            AddDefaultCommands();
         }
 
         #endregion
@@ -52,6 +54,16 @@ namespace ArduinoWindowsRemoteControl.Windows
         public List<string> GetApplicationNames()
         {
             return _commandDispatcher.GetApplicationNames();
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void AddDefaultCommands()
+        {
+            AddNewCommandForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION, RemoteCommand.TurnOnOff, "ALT-F4");
+            AddNewCommandForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION, RemoteCommand.Mode, "ALT-SHIFT-TAB-TAB");
         }
 
         #endregion

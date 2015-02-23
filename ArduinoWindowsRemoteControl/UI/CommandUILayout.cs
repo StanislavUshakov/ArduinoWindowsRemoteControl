@@ -17,7 +17,7 @@ namespace ArduinoWindowsRemoteControl.UI
         private Panel _panel;
         private ToolTip _toolTip;
         private int _space = 10;
-        private int _firstColumnWidth = 220;
+        private int _firstColumnWidth = 230;
         private int _secondColumnWidth = 280;
         private int _thirdColumnWidth = 75;
         private int _verticalSpaceLabel = 3;

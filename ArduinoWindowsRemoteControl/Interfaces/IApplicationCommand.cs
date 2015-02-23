@@ -12,7 +12,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// This application name represents default commands - when there is no
         /// command for specific application
         /// </summary>
-        public const string DEFAULT_APPLICATION = "";
+        public const string DEFAULT_APPLICATION = "DEFAULT";
     }
 
 
