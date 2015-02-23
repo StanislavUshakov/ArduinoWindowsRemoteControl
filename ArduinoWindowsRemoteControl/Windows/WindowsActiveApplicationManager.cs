@@ -10,7 +10,7 @@ namespace ArduinoWindowsRemoteControl.Windows
     /// <summary>
     /// Represents manager that gets remotes command and processe it
     /// </summary>
-    public class WindowsActiveApplicatinoManager : ICommandManager
+    public class WindowsActiveApplicationManager : ICommandManager
     {
         #region Private Fields
 
@@ -22,7 +22,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #region Constructor
 
-        public WindowsActiveApplicatinoManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IArduinoDevice arduinoDevice)
+        public WindowsActiveApplicationManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IArduinoDevice arduinoDevice)
         {
             _appCommandFactory = appCommandFactory;
             _commandDispatcher = commandDispatcher;
