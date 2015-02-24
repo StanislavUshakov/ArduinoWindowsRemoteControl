@@ -40,9 +40,22 @@ namespace ArduinoWindowsRemoteControl.Repositories
             root.Save(_filename);
         }
 
-        public List<IApplicationCommand> Load()
+        public List<ApplicationCommandDTO> Load()
         {
-            throw new NotImplementedException();
+            var result = new List<ApplicationCommandDTO>();
+
+            XElement root = XElement.Load(_filename);
+            foreach (var node in root.Elements())
+            {
+                result.Add(new ApplicationCommandDTO 
+                    {
+                        ApplicationName = node.Attribute(_appNameAttribute).Value,
+                        RemoteCommand = (RemoteCommand)Enum.Parse(typeof(RemoteCommand), node.Attribute(_remoteCommandAttribute).Value),
+                        Command = node.Attribute(_commandAttribute).Value
+                    });
+            }
+
+            return result;
         }
     }
 }
