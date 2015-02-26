@@ -12,27 +12,39 @@ namespace UnitTests
     [TestClass]
     public class XMLCommandRepositoryUnitTest
     {
-        public const string filename = "settings.xml";
-        public const string appName = "applicationTest";
-        public const RemoteCommand remoteCommand = RemoteCommand.Dig0;
-        public const string command = "A,A,A";
+        #region Public Properties
 
         public XMLFileApplicationCommandRepository Repository { get; set; }
+
+        public List<IApplicationCommand> Commands { get; set; }
+
+        public string Filename { get; set; }
+
+        #endregion
+
+        #region SetUp
 
         [TestInitialize]
         public void Setup()
         {
             Repository = new XMLFileApplicationCommandRepository();
+            Commands = new List<IApplicationCommand>();
+            Commands.Add(new WindowsKeyboardApplicationCommand("applicationTest", RemoteCommand.Dig0, new WindowsKeyboardCommand("A,A,A")));
+            Filename = "settings.xml";
         }
+
+        #endregion
+
+        #region Tests
 
         [TestMethod]
         public void TestSavingToXML()
         {
-            SaveCommands(GetCommands());
+            SaveCommands(Commands);
 
-            Assert.IsTrue(File.Exists(filename));
+            Assert.IsTrue(File.Exists(Filename));
 
-            var root = XElement.Load(filename);
+            var root = XElement.Load(Filename);
 
             Assert.IsNotNull(root);
             Assert.IsTrue(root.HasElements);
@@ -41,34 +53,30 @@ namespace UnitTests
         [TestMethod]
         public void TestLoadingFromXML()
         {
-            var commands = GetCommands();
-
-            SaveCommands(commands);
+            SaveCommands(Commands);
 
             var loadedCommands = Repository.Load();
 
             Assert.IsNotNull(loadedCommands);
             Assert.AreEqual(loadedCommands.Count, 1);
-            Assert.AreEqual(loadedCommands[0].ApplicationName, commands[0].ApplicationName);
-            Assert.AreEqual(loadedCommands[0].RemoteCommand, commands[0].RemoteCommand);
-            Assert.AreEqual(loadedCommands[0].Command, commands[0].Command.ToString());
+            Assert.AreEqual(loadedCommands[0].ApplicationName, Commands[0].ApplicationName);
+            Assert.AreEqual(loadedCommands[0].RemoteCommand, Commands[0].RemoteCommand);
+            Assert.AreEqual(loadedCommands[0].Command, Commands[0].Command.ToString());
         }
 
+        #endregion
+
+        #region Private Methods
         private void SaveCommands(IEnumerable<IApplicationCommand> commands)
         {
-            if (File.Exists(filename))
+            if (File.Exists(Filename))
             {
-                File.Delete(filename);
+                File.Delete(Filename);
             }
 
             Repository.Save(commands);
         }
 
-        private List<IApplicationCommand> GetCommands()
-        {
-            var commands = new List<IApplicationCommand>();
-            commands.Add(new WindowsKeyboardApplicationCommand(appName, remoteCommand, new WindowsKeyboardCommand(command)));
-            return commands;
-        }
+        #endregion
     }
 }

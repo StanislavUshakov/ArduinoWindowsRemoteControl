@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -52,7 +55,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FactoriesTests.cs" />
+    <Compile Include="BaseCommandsUnitTest.cs" />
+    <Compile Include="FactoriesUnitTest.cs" />
+    <Compile Include="CurrentActiveApplicationCommandDispatcherUnitTest.cs" />
+    <Compile Include="WindowsActiveApplicationManagerUnitTest.cs" />
     <Compile Include="XMLCommandRepositoryUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeCoverage.runsettings" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

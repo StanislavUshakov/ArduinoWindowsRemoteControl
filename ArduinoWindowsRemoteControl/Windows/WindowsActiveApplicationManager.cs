@@ -56,6 +56,11 @@ namespace ArduinoWindowsRemoteControl.Windows
             return _commandDispatcher.GetApplicationNames();
         }
 
+        public void DeleteAllCommands()
+        {
+            _commandDispatcher.DeleteAllCommands();
+        }
+
         #endregion
 
         #region Private Methods

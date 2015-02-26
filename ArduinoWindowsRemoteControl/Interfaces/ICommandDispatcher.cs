@@ -43,5 +43,10 @@ namespace ArduinoWindowsRemoteControl.Interfaces
         /// </summary>
         /// <returns>List of strings - names of applications</returns>
         List<string> GetApplicationNames();
+
+        /// <summary>
+        /// Delete all commands
+        /// </summary>
+        void DeleteAllCommands();
     }
 }

@@ -72,6 +72,13 @@ namespace ArduinoWindowsRemoteControl.Windows
                 {
                     //remove
                     commandsForApp.Remove(applicationCommand.RemoteCommand);
+
+                    //if there's no commands for this applictaion left - delete
+                    if (commandsForApp.Count == 0)
+                    {
+                        _applicationCommandsMapping.Remove(applicationCommand.ApplicationName);
+                    }
+
                     return true;
                 }
                 else
@@ -122,6 +129,11 @@ namespace ArduinoWindowsRemoteControl.Windows
         public List<string> GetApplicationNames()
         {
             return _applicationCommandsMapping.Keys.ToList();
+        }
+
+        public void DeleteAllCommands()
+        {
+            _applicationCommandsMapping = new Dictionary<string, Dictionary<RemoteCommand, IApplicationCommand>>();
         }
 
         #endregion
