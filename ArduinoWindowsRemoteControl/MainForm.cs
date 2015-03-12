@@ -1,4 +1,5 @@
 ﻿using ArduinoWindowsRemoteControl.Interfaces;
+using ArduinoWindowsRemoteControl.Services;
 using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Unity;
 using Microsoft.Practices.Unity;
@@ -22,21 +23,21 @@ namespace ArduinoWindowsRemoteControl
         private ICommandManager _commandManager;
         private CommandUILayout _UILayout;
         private EditCommandForm _editForm;
+        private ApplicationCommandPersistentService _persistentService;
 
         #endregion
 
         #region Constructor
 
-        public MainForm(ICommandManager commandManager, EditCommandForm editForm)
+        public MainForm(ICommandManager commandManager, ApplicationCommandPersistentService persistentService, EditCommandForm editForm)
         {
             InitializeComponent();
             _commandManager = commandManager;
+            _persistentService = persistentService;
             _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
             _editForm = editForm;
 
-            //temp init
-            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.PlayPause, "A,A,A,C,Ctrl-A,Ctrl-X,Ctrl-V");
-            _commandManager.AddNewCommandForApplication("WinWord", RemoteCommand.Next, "B,B,B");
+            _persistentService.Load(_commandManager);
 
             cbApplication.Items.AddRange(_commandManager.GetApplicationNames().ToArray());
             cbApplication.SelectedIndex = 0;
@@ -87,6 +88,11 @@ namespace ArduinoWindowsRemoteControl
             UpdateCommandsListView(_currentAppplicationName);
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _persistentService.Save(_commandManager);
+        }
+
         #endregion
 
         #region Private Methods
@@ -108,6 +114,6 @@ namespace ArduinoWindowsRemoteControl
             _UILayout.ShowCommandsForApplication(_commandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
         }
 
-        #endregion
+        #endregion        
     }
 }
