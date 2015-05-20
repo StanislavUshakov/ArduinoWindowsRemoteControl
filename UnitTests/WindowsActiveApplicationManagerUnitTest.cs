@@ -56,19 +56,11 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TestDefaultCommandsAreAdded()
-        {
-            Assert.AreEqual(Manager.GetApplicationNames().Count, 1);
-            Assert.AreEqual(Manager.GetApplicationNames()[0], IApplicationCommandConstants.DEFAULT_APPLICATION);
-            Assert.AreEqual(Manager.GetCommandsForApplication(IApplicationCommandConstants.DEFAULT_APPLICATION).Count, 2);
-        }
-
-        [TestMethod]
         public void TestSimpleAdd()
         {
             Assert.IsFalse(Manager.AddNewCommandForApplication(Commands[0].ApplicationName, Commands[0].RemoteCommand, Commands[0].Command.ToString()));
-            Assert.AreEqual(Manager.GetApplicationNames().Count, 2);
-            Assert.AreEqual(Manager.GetApplicationNames()[1], Commands[0].ApplicationName);
+            Assert.AreEqual(Manager.GetApplicationNames().Count, 1);
+            Assert.AreEqual(Manager.GetApplicationNames()[0], Commands[0].ApplicationName);
             Assert.AreEqual(Manager.GetCommandsForApplication(Commands[0].ApplicationName).Count, 1);
             Assert.AreEqual(Manager.GetCommandsForApplication(Commands[0].ApplicationName)[0].Command.ToString(), Commands[0].Command.ToString());
         }
@@ -78,8 +70,8 @@ namespace UnitTests
         {
             Assert.IsFalse(Manager.AddNewCommandForApplication(Commands[0].ApplicationName, Commands[0].RemoteCommand, Commands[0].Command.ToString()));
             Assert.IsTrue(Manager.AddNewCommandForApplication(Commands[0].ApplicationName, Commands[0].RemoteCommand, Commands[0].Command.ToString()));
-            Assert.AreEqual(Manager.GetApplicationNames().Count, 2);
-            Assert.AreEqual(Manager.GetApplicationNames()[1], Commands[0].ApplicationName);
+            Assert.AreEqual(Manager.GetApplicationNames().Count, 1);
+            Assert.AreEqual(Manager.GetApplicationNames()[0], Commands[0].ApplicationName);
             Assert.AreEqual(Manager.GetCommandsForApplication(Commands[0].ApplicationName).Count, 1);
             Assert.AreEqual(Manager.GetCommandsForApplication(Commands[0].ApplicationName)[0].Command.ToString(), Commands[0].Command.ToString());
         }
@@ -90,8 +82,7 @@ namespace UnitTests
             Manager.AddNewCommandForApplication(Commands[0].ApplicationName, Commands[0].RemoteCommand, Commands[0].Command.ToString());
             Manager.DeleteApplicationCommand(Commands[0]);
 
-            Assert.AreEqual(Manager.GetApplicationNames().Count, 1);
-            Assert.AreEqual(Manager.GetCommandsForApplication(Commands[0].ApplicationName).Count, 0);
+            Assert.AreEqual(Manager.GetApplicationNames().Count, 0);
         }
 
         [TestMethod]
