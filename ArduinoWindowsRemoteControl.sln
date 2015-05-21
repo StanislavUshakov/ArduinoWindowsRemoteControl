@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoWindowsRemoteControl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{B7177BF0-B404-4F17-9ACB-890341D1DEDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{524FFE67-56FB-4513-A199-D410998597DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B7177BF0-B404-4F17-9ACB-890341D1DEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7177BF0-B404-4F17-9ACB-890341D1DEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7177BF0-B404-4F17-9ACB-890341D1DEDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524FFE67-56FB-4513-A199-D410998597DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524FFE67-56FB-4513-A199-D410998597DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524FFE67-56FB-4513-A199-D410998597DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524FFE67-56FB-4513-A199-D410998597DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

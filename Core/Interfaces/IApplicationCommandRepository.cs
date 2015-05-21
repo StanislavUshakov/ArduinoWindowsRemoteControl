@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Interfaces
+namespace Core.Interfaces
 {
     /// <summary>
     /// Data Transfer Object for IApplicationCommand entity
-    /// USed for retrieving information from Data Source
+    /// Used for retrieving information from Data Source
     /// </summary>
     public class ApplicationCommandDTO
     {

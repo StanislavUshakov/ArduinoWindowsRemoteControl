@@ -67,6 +67,10 @@
       <Project>{97ebcdfb-fe83-4c21-b7fd-e188ef63ca36}</Project>
       <Name>ArduinoWindowsRemoteControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{524ffe67-56fb-4513-a199-d410998597df}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeCoverage.runsettings" />

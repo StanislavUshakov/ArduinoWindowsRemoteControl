@@ -57,14 +57,6 @@
     <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\WinAPIHelpers.cs" />
     <Compile Include="Helpers\WinAPIMethods.cs" />
-    <Compile Include="Interfaces\IApplicationCommandRepository.cs" />
-    <Compile Include="Interfaces\IApplicationCommand.cs" />
-    <Compile Include="Interfaces\IApplicationCommandFactory.cs" />
-    <Compile Include="Interfaces\IArduinoDevice.cs" />
-    <Compile Include="Interfaces\ICommand.cs" />
-    <Compile Include="Interfaces\ICommandFactory.cs" />
-    <Compile Include="Interfaces\ICommandDispatcher.cs" />
-    <Compile Include="Interfaces\ICommandManager.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +114,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{524ffe67-56fb-4513-a199-d410998597df}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

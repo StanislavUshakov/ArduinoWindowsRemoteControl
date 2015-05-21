@@ -1,12 +1,13 @@
-﻿using ArduinoWindowsRemoteControl.Interfaces;
-using ArduinoWindowsRemoteControl.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Core.Interfaces;
+using ArduinoWindowsRemoteControl.Helpers;
 
 namespace ArduinoWindowsRemoteControl.UI
 {

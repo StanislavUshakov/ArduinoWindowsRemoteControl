@@ -1,5 +1,5 @@
-﻿using ArduinoWindowsRemoteControl.Interfaces;
-using ArduinoWindowsRemoteControl.Windows;
+﻿using ArduinoWindowsRemoteControl.Windows;
+using Core.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

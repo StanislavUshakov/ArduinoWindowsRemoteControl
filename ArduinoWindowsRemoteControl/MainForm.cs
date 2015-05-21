@@ -1,7 +1,7 @@
-﻿using ArduinoWindowsRemoteControl.Interfaces;
-using ArduinoWindowsRemoteControl.Services;
+﻿using ArduinoWindowsRemoteControl.Services;
 using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Unity;
+using Core.Interfaces;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;

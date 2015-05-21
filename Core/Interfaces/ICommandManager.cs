@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Interfaces
+namespace Core.Interfaces
 {
     /// <summary>
     /// Process and manages commands 

@@ -1,5 +1,5 @@
 ﻿using ArduinoWindowsRemoteControl.Helpers;
-using ArduinoWindowsRemoteControl.Interfaces;
+using Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
