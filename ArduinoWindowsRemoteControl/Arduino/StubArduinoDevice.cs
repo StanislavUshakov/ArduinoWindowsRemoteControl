@@ -12,7 +12,7 @@ namespace ArduinoWindowsRemoteControl.Arduino
     /// Represents stub remote control device that sends PlayPause and Next commands
     /// every 5 seconds.
     /// </summary>
-    public class StubArduinoDevice : IArduinoDevice
+    public class StubArduinoDevice : IRemoteInputDevice
     {
         public StubArduinoDevice()
         {

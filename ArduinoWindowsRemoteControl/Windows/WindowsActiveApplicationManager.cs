@@ -16,13 +16,13 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         private IApplicationCommandFactory _appCommandFactory;
         private ICommandDispatcher _commandDispatcher;
-        private IArduinoDevice _arduinoDevice;
+        private IRemoteInputDevice _arduinoDevice;
 
         #endregion
 
         #region Constructor
 
-        public WindowsActiveApplicationManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IArduinoDevice arduinoDevice)
+        public WindowsActiveApplicationManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IRemoteInputDevice arduinoDevice)
         {
             _appCommandFactory = appCommandFactory;
             _commandDispatcher = commandDispatcher;

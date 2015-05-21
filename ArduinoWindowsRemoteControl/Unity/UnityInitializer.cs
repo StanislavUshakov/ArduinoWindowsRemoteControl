@@ -24,7 +24,7 @@ namespace ArduinoWindowsRemoteControl.Unity
             container.RegisterType<IApplicationCommandFactory, WindowsKeyboardApplicationCommandFactory>();
             container.RegisterType<ICommandDispatcher, CurrentActiveApplicationCommandDispatcher>();
             container.RegisterType<ICommandManager, WindowsActiveApplicationManager>(new ContainerControlledLifetimeManager());
-            container.RegisterType<IArduinoDevice, StubArduinoDevice>();
+            container.RegisterType<IRemoteInputDevice, StubArduinoDevice>();
             container.RegisterType<IApplicationCommandRepository, XMLFileApplicationCommandRepository>();
             container.RegisterType<ApplicationCommandPersistentService>();
             container.RegisterType<MainForm>();

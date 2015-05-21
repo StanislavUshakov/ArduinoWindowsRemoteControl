@@ -84,7 +84,7 @@ namespace ArduinoWindowsRemoteControl.Interfaces
     /// <summary>
     /// Represents device that is connected with the remote control
     /// </summary>
-    public interface IArduinoDevice
+    public interface IRemoteInputDevice
     {
         /// <summary>
         /// This event is fired when remote command is received
