@@ -1,8 +1,9 @@
-﻿using ArduinoWindowsRemoteControl.Arduino;
+﻿using Arduino;
 using ArduinoWindowsRemoteControl.Repositories;
 using ArduinoWindowsRemoteControl.Services;
 using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Windows;
+using Core.Interfaces;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-using Core.Interfaces;
 
 namespace ArduinoWindowsRemoteControl.Unity
 {
@@ -25,7 +24,7 @@ namespace ArduinoWindowsRemoteControl.Unity
             container.RegisterType<IApplicationCommandFactory, WindowsKeyboardApplicationCommandFactory>();
             container.RegisterType<ICommandDispatcher, CurrentActiveApplicationCommandDispatcher>();
             container.RegisterType<ICommandManager, WindowsActiveApplicationManager>(new ContainerControlledLifetimeManager());
-            container.RegisterType<IRemoteInputDevice, StubArduinoDevice>();
+            container.RegisterType<IRemoteInputDevice, ArduinoInputDevice>(new InjectionConstructor(Program.PortName));
             container.RegisterType<IApplicationCommandRepository, XMLFileApplicationCommandRepository>();
             container.RegisterType<ApplicationCommandPersistentService>();
             container.RegisterType<MainForm>();

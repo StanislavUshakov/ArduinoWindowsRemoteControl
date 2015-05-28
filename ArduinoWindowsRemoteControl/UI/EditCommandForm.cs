@@ -1,5 +1,5 @@
-﻿using ArduinoWindowsRemoteControl.Helpers;
-using Core.Interfaces;
+﻿using Core.Interfaces;
+using Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

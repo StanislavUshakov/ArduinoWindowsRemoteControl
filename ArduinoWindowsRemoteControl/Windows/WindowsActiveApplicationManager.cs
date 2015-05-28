@@ -27,7 +27,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             _appCommandFactory = appCommandFactory;
             _commandDispatcher = commandDispatcher;
             _arduinoDevice = arduinoDevice;
-            _arduinoDevice.OnCommandReceived += _commandDispatcher.DispatchCommand;
+            _arduinoDevice.CommandReceived += _commandDispatcher.DispatchCommand;
         }
 
         #endregion

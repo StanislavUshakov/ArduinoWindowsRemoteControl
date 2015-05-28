@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Arduino
+namespace Arduino
 {
     /// <summary>
     /// Represents stub remote control device that sends PlayPause and Next commands
@@ -21,15 +21,25 @@ namespace ArduinoWindowsRemoteControl.Arduino
                     while (true)
                     {
                         Thread.Sleep(2500);
-                        if (OnCommandReceived != null)
-                            OnCommandReceived(RemoteCommand.PlayPause);
+                        if (CommandReceived != null)
+                            CommandReceived(RemoteCommand.PlayPause);
                         Thread.Sleep(2500);
-                        if (OnCommandReceived != null)
-                            OnCommandReceived(RemoteCommand.Mode);
+                        if (CommandReceived != null)
+                            CommandReceived(RemoteCommand.Mode);
                     }
                 });
         }
 
-        public event Action<RemoteCommand> OnCommandReceived;
+        public event Action<RemoteCommand> CommandReceived;
+
+
+        public void Open() { }
+
+        public void Close() { }
+
+        public bool IsOpened
+        {
+            get { return true; }
+        }
     }
 }

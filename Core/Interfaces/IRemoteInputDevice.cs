@@ -87,6 +87,21 @@ namespace Core.Interfaces
         /// <summary>
         /// This event is fired when remote command is received
         /// </summary>
-        event Action<RemoteCommand> OnCommandReceived;
+        event Action<RemoteCommand> CommandReceived;
+
+        /// <summary>
+        /// Opens input device. If the device is not opened (started), commands are not received and sent
+        /// </summary>
+        void Open();
+
+        /// <summary>
+        /// Closes input device. If the device is closed(stopped), commands are not received and sent
+        /// </summary>
+        void Close();
+
+        /// <summary>
+        /// Shows if input device is opened and sends commands
+        /// </summary>
+        bool IsOpened { get; }
     }
 }

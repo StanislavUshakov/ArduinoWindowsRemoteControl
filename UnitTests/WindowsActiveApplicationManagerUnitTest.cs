@@ -51,7 +51,7 @@ namespace UnitTests
         [TestMethod]
         public void TestDispacthIsCalled()
         {
-            RemoteInputMock.Raise(input => input.OnCommandReceived += null, RemoteCommand.Dig0);
+            RemoteInputMock.Raise(input => input.CommandReceived += null, RemoteCommand.Dig0);
             CommandDispatcherMock.Verify(dispatcher => dispatcher.DispatchCommand(RemoteCommand.Dig0), Times.Exactly(1));
         }
 
