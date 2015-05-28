@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ArduinoWindowsRemoteControl.Helpers
+namespace Helpers
 {
     public static class WinAPIHelpers
     {

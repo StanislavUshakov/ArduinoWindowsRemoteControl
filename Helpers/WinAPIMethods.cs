@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Helpers
+namespace Helpers
 {
     /// <summary>
     /// Helper class for accessing WinAPI methods using P/Invoke
