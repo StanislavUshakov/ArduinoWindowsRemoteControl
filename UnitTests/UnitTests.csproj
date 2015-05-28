@@ -58,6 +58,7 @@
     <Compile Include="BaseCommandsUnitTest.cs" />
     <Compile Include="FactoriesUnitTest.cs" />
     <Compile Include="CurrentActiveApplicationCommandDispatcherUnitTest.cs" />
+    <Compile Include="DictionaryRepositoryUnitTest.cs" />
     <Compile Include="WindowsActiveApplicationManagerUnitTest.cs" />
     <Compile Include="XMLCommandRepositoryUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
