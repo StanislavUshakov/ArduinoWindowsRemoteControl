@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\ICommandDispatcher.cs" />
     <Compile Include="Interfaces\ICommandFactory.cs" />
     <Compile Include="Interfaces\ICommandManager.cs" />
+    <Compile Include="Interfaces\IRemoteCommandParser.cs" />
     <Compile Include="Interfaces\IRemoteInputDevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

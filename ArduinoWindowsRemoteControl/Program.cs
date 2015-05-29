@@ -11,6 +11,9 @@ namespace ArduinoWindowsRemoteControl
 {
     static class Program
     {
+        /// <summary>
+        /// Serial port with Arduino
+        /// </summary>
         public static string PortName { get; set; }
 
         /// <summary>
