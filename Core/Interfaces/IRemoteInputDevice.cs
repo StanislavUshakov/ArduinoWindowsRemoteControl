@@ -92,7 +92,7 @@ namespace Core.Interfaces
         /// <summary>
         /// Opens input device. If the device is not opened (started), commands are not received and sent
         /// </summary>
-        void Open();
+        void Open(IRemoteCommandParser commandParser);
 
         /// <summary>
         /// Closes input device. If the device is closed(stopped), commands are not received and sent

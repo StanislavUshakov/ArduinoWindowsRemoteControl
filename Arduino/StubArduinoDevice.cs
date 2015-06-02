@@ -33,7 +33,7 @@ namespace Arduino
         public event Action<RemoteCommand> CommandReceived;
 
 
-        public void Open() { }
+        public void Open(IRemoteCommandParser commandParser) { }
 
         public void Close() { }
 

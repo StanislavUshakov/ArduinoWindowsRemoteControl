@@ -20,6 +20,7 @@ namespace Arduino
         private readonly SerialPort _port;
         private bool _isOpened;
         private Thread _readingThread;
+        private IRemoteCommandParser _commandParser;
 
         #endregion
 
@@ -36,10 +37,11 @@ namespace Arduino
 
         public event Action<RemoteCommand> CommandReceived;
         
-        public void Open()
+        public void Open(IRemoteCommandParser commandParser)
         {
             try
             {
+                _commandParser = commandParser;
                 _port.Open();
                 _isOpened = true;
                 _readingThread = new Thread(ReadInformationFromDevice);
@@ -79,7 +81,9 @@ namespace Arduino
             while (true)
             {
                 string command = _port.ReadLine();
-                //TODO: parse command, rise event
+                var remoteCommand = _commandParser.Parse(int.Parse(command));
+                if (CommandReceived != null)
+                    CommandReceived(remoteCommand);
             }
         }
 

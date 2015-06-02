@@ -22,6 +22,7 @@ namespace ArduinoWindowsRemoteControl.Unity
             container.RegisterType<ICommand, WindowsKeyboardCommand>();
             container.RegisterType<ICommandFactory, WindowsKeyboardCommandFactory>();
             container.RegisterType<IApplicationCommandFactory, WindowsKeyboardApplicationCommandFactory>();
+            container.RegisterType<IRemoteCommandParser, ArduinoRemoteCommandParser>();
             container.RegisterType<ICommandDispatcher, CurrentActiveApplicationCommandDispatcher>();
             container.RegisterType<ICommandManager, WindowsActiveApplicationManager>(new ContainerControlledLifetimeManager());
             container.RegisterType<IRemoteInputDevice, ArduinoInputDevice>(new InjectionConstructor(Program.PortName));
