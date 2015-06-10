@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Arduino
+namespace Arduino.Devices
 {
     /// <summary>
     /// Represents stub remote control device that sends PlayPause and Next commands

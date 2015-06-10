@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arduino
+namespace Arduino.Parsers
 {
     /// <summary>
     /// This class parses output from the Arduino device and returns appropriate RemoteCommand

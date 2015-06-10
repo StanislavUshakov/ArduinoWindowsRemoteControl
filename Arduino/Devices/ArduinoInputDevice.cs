@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Arduino
+namespace Arduino.Devices
 {
     /// <summary>
     /// This class is used for communication with the Arduino device via serial port.

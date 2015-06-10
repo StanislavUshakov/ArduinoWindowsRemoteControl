@@ -1,4 +1,5 @@
-﻿using Arduino;
+﻿using Arduino.Devices;
+using Arduino.Parsers;
 using ArduinoWindowsRemoteControl.Services;
 using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Windows;
