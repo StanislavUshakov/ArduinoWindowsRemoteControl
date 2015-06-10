@@ -1,9 +1,9 @@
 ﻿using Arduino;
-using ArduinoWindowsRemoteControl.Repositories;
 using ArduinoWindowsRemoteControl.Services;
 using ArduinoWindowsRemoteControl.UI;
 using ArduinoWindowsRemoteControl.Windows;
 using Core.Interfaces;
+using DAL.Repositories;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;

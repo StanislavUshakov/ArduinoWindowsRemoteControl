@@ -72,6 +72,10 @@
       <Project>{524ffe67-56fb-4513-a199-d410998597df}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{cb21b355-b605-495f-b58f-a7d32a7ee1d7}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeCoverage.runsettings" />

@@ -61,8 +61,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DictionaryRepository.cs" />
-    <Compile Include="Repositories\XMLFileApplicationCommandRepository.cs" />
     <Compile Include="SelectPortForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +127,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{524ffe67-56fb-4513-a199-d410998597df}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{cb21b355-b605-495f-b58f-a7d32a7ee1d7}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Helpers\Helpers.csproj">
       <Project>{8f84d0c3-f7e7-4882-9f5f-c4bc9dc3ed0b}</Project>

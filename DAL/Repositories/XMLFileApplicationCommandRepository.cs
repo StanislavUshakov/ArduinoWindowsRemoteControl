@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace ArduinoWindowsRemoteControl.Repositories
+namespace DAL.Repositories
 {
     /// <summary>
     /// Realization of IApplicationCommandRepository that stores commands in XML file in working directory

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Repositories
+namespace DAL.Repositories
 {
     /// <summary>
     /// This class is used for saving Dictionary<Tkey, TValue> objects to the text file

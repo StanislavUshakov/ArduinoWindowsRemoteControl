@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using ArduinoWindowsRemoteControl.Repositories;
 using System.IO;
 using Core.Interfaces;
+using DAL.Repositories;
 
 namespace UnitTests
 {
