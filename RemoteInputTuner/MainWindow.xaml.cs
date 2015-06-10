@@ -1,4 +1,6 @@
-﻿using RemoteInputTuner.ViewModels;
+﻿using Core.Interfaces;
+using RemoteInputTuner.Code;
+using RemoteInputTuner.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +23,34 @@ namespace RemoteInputTuner
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Private Fields
+
         private MainViewModel _mainViewModel;
+        private RemoteCommandEnumerator _remoteCommandEnumerator;
+
+        #endregion
+
+        #region Constructor
 
         public MainWindow()
         {
             InitializeComponent();
             _mainViewModel = new MainViewModel();
             DataContext = _mainViewModel;
+
+            _remoteCommandEnumerator = new RemoteCommandEnumerator();
         }
+
+        #endregion
+
+        #region Private Event Handlers
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(_mainViewModel.CurrentSerialPort.Name);
+            _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
         }
+
+        #endregion
     }
 }

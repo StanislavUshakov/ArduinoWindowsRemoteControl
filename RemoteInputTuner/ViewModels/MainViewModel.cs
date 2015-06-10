@@ -1,4 +1,5 @@
-﻿using RemoteInputTuner.Models;
+﻿using Core.Interfaces;
+using RemoteInputTuner.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,8 @@ namespace RemoteInputTuner.ViewModels
 
         private readonly ObservableCollection<SerialPortModel> _serialPorts;
         private SerialPortModel _serialPort;
+        private List<string> _remoteCommands;
+        private string _currentRemoteCommand;
 
         #endregion
 
@@ -29,7 +32,7 @@ namespace RemoteInputTuner.ViewModels
         {
             var ports = SerialPort.GetPortNames().Select(s => new SerialPortModel(s));
             _serialPorts = new ObservableCollection<SerialPortModel>();
-
+            
             foreach (var port in ports)
                 _serialPorts.Add(port);
 
@@ -53,12 +56,32 @@ namespace RemoteInputTuner.ViewModels
         /// </summary>
         public SerialPortModel CurrentSerialPort
         {
-            get { return _serialPort; }
+            get 
+            { 
+                return _serialPort; 
+            }
             set
             {
                 if (_serialPort == value) return;
                 _serialPort = value;
                 OnPropertyChanged("CurrentSerialPort");
+            }
+        }
+
+        /// <summary>
+        /// Current remote command for binding
+        /// </summary>
+        public string CurrentRemoteCommand
+        {
+            get
+            {
+                return _currentRemoteCommand; 
+            }
+            set
+            {
+                if (_currentRemoteCommand == value) return;
+                _currentRemoteCommand = value;
+                OnPropertyChanged("CurrentRemoteCommand");
             }
         }
 

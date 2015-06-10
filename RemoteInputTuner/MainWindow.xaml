@@ -7,11 +7,17 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Select Serial Port:" HorizontalAlignment="Left" Margin="10,10,0,14" VerticalAlignment="Center" FontSize="14"/>
-        <ComboBox Grid.Row="0" HorizontalAlignment="Left" Margin="137,14,0,14" VerticalAlignment="Center" Width="159" Name="cbPort"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal"></StackPanel>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Select Serial Port:" HorizontalAlignment="Left" Margin="10,10,0,14" VerticalAlignment="Center" FontSize="14"/>
+        <ComboBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="137,14,0,14" VerticalAlignment="Center" Width="159" Name="cbPort"
                   ItemsSource="{Binding Path=SerialPorts}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectedItem="{Binding Path=CurrentSerialPort, Mode=TwoWay}" SelectedIndex="0" />
-        <Button Grid.Row="0" Content="Connect" HorizontalAlignment="Left" Margin="390,14,0,14" VerticalAlignment="Center" Width="105" Name="btConnect" Click="ConnectButton_Click"/>
-
+        <Button Grid.Row="0" Grid.ColumnSpan="2" Content="Connect" HorizontalAlignment="Left" Margin="390,14,0,14" VerticalAlignment="Center" Width="105" Name="btConnect" Click="ConnectButton_Click"/>
+        <TextBlock  Grid.Row="1" Grid.Column="0" FontSize="38" TextAlignment="Center" Text="Press key"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="34" TextAlignment="Center" Margin="0, 100, 0, 0" Text="{Binding Path=CurrentRemoteCommand}"></TextBlock>      
 
     </Grid>
 </Window>
