@@ -38,7 +38,7 @@ namespace RemoteInputTuner.Code
         /// <returns>String representation of the next remote command; null - if all remote commands have been enumerated</returns>
         public string GetNext()
         {
-            if (_currentRemoteCommandIndex > _remoteCommands.Count)
+            if (_currentRemoteCommandIndex >= _remoteCommands.Count)
                 return null;
 
             return _remoteCommands[_currentRemoteCommandIndex++];

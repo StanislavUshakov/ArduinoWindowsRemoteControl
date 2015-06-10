@@ -50,7 +50,21 @@ namespace RemoteInputTuner
             MessageBox.Show(_mainViewModel.CurrentSerialPort.Name);
             _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
         }
+        
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                string nextCommand = _remoteCommandEnumerator.GetNext();
+                if (nextCommand == null)
+                    MessageBox.Show("All remote commands were associated.");
+                _mainViewModel.CurrentRemoteCommand = nextCommand;
+
+                e.Handled = true;
+            }
+        }
 
         #endregion
+
     }
 }
