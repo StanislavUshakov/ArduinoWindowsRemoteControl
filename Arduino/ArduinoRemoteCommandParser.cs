@@ -10,17 +10,17 @@ namespace Arduino
     /// <summary>
     /// This class parses output from the Arduino device and returns appropriate RemoteCommand
     /// </summary>
-    public class ArduinoRemoteCommandParser : IRemoteCommandParser
+    public class ArduinoRemoteCommandParser : IRemoteCommandParser<RemoteCommand>
     {
         #region Private Fields
 
-        private Dictionary<int, RemoteCommand> _commandsMapping;
+        private Dictionary<string, RemoteCommand> _commandsMapping;
 
         #endregion
 
         #region Constructor
 
-        public ArduinoRemoteCommandParser(Dictionary<int, RemoteCommand> commandsMapping)
+        public ArduinoRemoteCommandParser(Dictionary<string, RemoteCommand> commandsMapping)
         {
             _commandsMapping = commandsMapping;
         }
@@ -29,11 +29,11 @@ namespace Arduino
 
         #region Public Properties
 
-        public Dictionary<int, RemoteCommand> CommandsMapping
+        public Dictionary<string, RemoteCommand> CommandsMapping
         {
             get
             {
-                return new Dictionary<int,RemoteCommand>(_commandsMapping);
+                return new Dictionary<string, RemoteCommand>(_commandsMapping);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Arduino
 
         #region IRemoteCommandParser Members
 
-        public RemoteCommand Parse(int commandCode)
+        public RemoteCommand Parse(string commandCode)
         {
             if (!_commandsMapping.ContainsKey(commandCode))
             {

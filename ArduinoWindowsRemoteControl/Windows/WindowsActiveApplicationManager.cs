@@ -16,13 +16,13 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         private IApplicationCommandFactory _appCommandFactory;
         private ICommandDispatcher _commandDispatcher;
-        private IRemoteInputDevice _arduinoDevice;
+        private IRemoteInputDevice<RemoteCommand> _arduinoDevice;
 
         #endregion
 
         #region Constructor
 
-        public WindowsActiveApplicationManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IRemoteInputDevice arduinoDevice)
+        public WindowsActiveApplicationManager(IApplicationCommandFactory appCommandFactory, ICommandDispatcher commandDispatcher, IRemoteInputDevice<RemoteCommand> arduinoDevice)
         {
             _appCommandFactory = appCommandFactory;
             _commandDispatcher = commandDispatcher;
@@ -59,7 +59,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             _commandDispatcher.DeleteAllCommands();
         }
 
-        public IRemoteInputDevice InputDeice
+        public IRemoteInputDevice<RemoteCommand> InputDeice
         {
             get
             {

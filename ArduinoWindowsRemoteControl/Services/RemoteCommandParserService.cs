@@ -38,7 +38,7 @@ namespace ArduinoWindowsRemoteControl.Services
         /// <returns></returns>
         public ArduinoRemoteCommandParser LoadArduinoCommandParser(string filename)
         {
-            var dictionary = _dictionaryRepository.Load<int, RemoteCommand>(filename);
+            var dictionary = _dictionaryRepository.Load<string, RemoteCommand>(filename);
 
             return new ArduinoRemoteCommandParser(dictionary);
         }

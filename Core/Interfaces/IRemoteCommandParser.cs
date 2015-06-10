@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 namespace Core.Interfaces
 {
     /// <summary>
-    /// This interface will be used for translating output from the remote input device to RemoteCommand
+    /// This interface will be used for translating output from the remote input device to another entity (RemoteCommand, string, etc)
     /// </summary>
-    public interface IRemoteCommandParser
+    /// <typeparam name="T">Type of objects to which messages will be translated</typeparam>
+    public interface IRemoteCommandParser<T>
     {
         /// <summary>
         /// For the output from the remote device returns matching RemoteCommand
         /// </summary>
-        /// <param name="commandCode">Output from the remote device</param>
-        /// <returns>Matching RemoteCommand</returns>
-        RemoteCommand Parse(int commandCode);
+        /// <param name="command">Output from the remote device</param>
+        /// <returns>Matching Value</returns>
+        T Parse(string command);
     }
 }

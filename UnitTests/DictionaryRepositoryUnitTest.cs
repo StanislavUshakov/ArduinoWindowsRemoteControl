@@ -59,17 +59,17 @@ namespace UnitTests
         [TestMethod]
         public void TestSaveAndLoadRemoteCommands()
         {
-            var dictionary = new Dictionary<int, RemoteCommand>() { { 1, RemoteCommand.Dig1 }, { 0, RemoteCommand.Dig0 } };
+            var dictionary = new Dictionary<string, RemoteCommand>() { { "1", RemoteCommand.Dig1 }, { "0", RemoteCommand.Dig0 } };
             var repository = new DictionaryRepository();
             string filename = "test.txt";
             repository.Save(dictionary, filename);
             Assert.IsTrue(File.Exists(filename));
 
-            var loadedDictionary = repository.Load<int, RemoteCommand>(filename);
+            var loadedDictionary = repository.Load<string, RemoteCommand>(filename);
 
             Assert.AreEqual(loadedDictionary.Count, 2);
-            Assert.AreEqual(loadedDictionary[1], RemoteCommand.Dig1);
-            Assert.AreEqual(loadedDictionary[0], RemoteCommand.Dig0);
+            Assert.AreEqual(loadedDictionary["1"], RemoteCommand.Dig1);
+            Assert.AreEqual(loadedDictionary["0"], RemoteCommand.Dig0);
         }
     }
 }

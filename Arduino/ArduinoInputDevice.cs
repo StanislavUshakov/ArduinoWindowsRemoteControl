@@ -13,14 +13,15 @@ namespace Arduino
     /// This class is used for communication with the Arduino device via serial port.
     /// Arduino device sends hexadecimal values that represent pushed buttons.
     /// </summary>
-    public class ArduinoInputDevice : IRemoteInputDevice
+    /// <typeparam name="T">Type of translated messages</typeparam>
+    public class ArduinoInputDevice<T> : IRemoteInputDevice<T>
     {
         #region Private Fields
 
         private readonly SerialPort _port;
         private bool _isOpened;
         private Thread _readingThread;
-        private IRemoteCommandParser _commandParser;
+        private IRemoteCommandParser<T> _commandParser;
 
         #endregion
 
@@ -35,9 +36,9 @@ namespace Arduino
 
         #region IRemoteInputDevice members
 
-        public event Action<RemoteCommand> CommandReceived;
+        public event Action<T> CommandReceived;
         
-        public void Open(IRemoteCommandParser commandParser)
+        public void Open(IRemoteCommandParser<T> commandParser)
         {
             try
             {
@@ -81,7 +82,7 @@ namespace Arduino
             while (true)
             {
                 string command = _port.ReadLine();
-                var remoteCommand = _commandParser.Parse(int.Parse(command));
+                var remoteCommand = _commandParser.Parse(command);
                 if (CommandReceived != null)
                     CommandReceived(remoteCommand);
             }

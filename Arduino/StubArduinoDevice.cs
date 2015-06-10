@@ -12,7 +12,7 @@ namespace Arduino
     /// Represents stub remote control device that sends PlayPause and Next commands
     /// every 5 seconds.
     /// </summary>
-    public class StubArduinoDevice : IRemoteInputDevice
+    public class StubArduinoDevice : IRemoteInputDevice<RemoteCommand>
     {
         public StubArduinoDevice()
         {
@@ -33,7 +33,7 @@ namespace Arduino
         public event Action<RemoteCommand> CommandReceived;
 
 
-        public void Open(IRemoteCommandParser commandParser) { }
+        public void Open(IRemoteCommandParser<RemoteCommand> commandParser) { }
 
         public void Close() { }
 

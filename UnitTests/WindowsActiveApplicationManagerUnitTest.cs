@@ -15,7 +15,7 @@ namespace UnitTests
     {
         #region Public Properties
 
-        public Mock<IRemoteInputDevice> RemoteInputMock { get; set; }
+        public Mock<IRemoteInputDevice<RemoteCommand>> RemoteInputMock { get; set; }
 
         public Mock<ICommandDispatcher> CommandDispatcherMock { get; set; }
 
@@ -34,7 +34,7 @@ namespace UnitTests
         {
             base.Setup();
 
-            RemoteInputMock = new Mock<IRemoteInputDevice>();
+            RemoteInputMock = new Mock<IRemoteInputDevice<RemoteCommand>>();
             CommandDispatcherMock = new Mock<ICommandDispatcher>();
             CommandDispatcherMock.Setup(d => d.DispatchCommand(RemoteCommand.Dig0));
             Factory = new WindowsKeyboardApplicationCommandFactory(new WindowsKeyboardCommandFactory());

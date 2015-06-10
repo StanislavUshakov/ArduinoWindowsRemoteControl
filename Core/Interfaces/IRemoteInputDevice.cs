@@ -82,17 +82,18 @@ namespace Core.Interfaces
     /// <summary>
     /// Represents device that is connected with the remote control
     /// </summary>
-    public interface IRemoteInputDevice
+    /// <typeparam name="T">Type of messages translated by input device</typeparam>
+    public interface IRemoteInputDevice<T>
     {
         /// <summary>
         /// This event is fired when remote command is received
         /// </summary>
-        event Action<RemoteCommand> CommandReceived;
+        event Action<T> CommandReceived;
 
         /// <summary>
         /// Opens input device. If the device is not opened (started), commands are not received and sent
         /// </summary>
-        void Open(IRemoteCommandParser commandParser);
+        void Open(IRemoteCommandParser<T> commandParser);
 
         /// <summary>
         /// Closes input device. If the device is closed(stopped), commands are not received and sent
