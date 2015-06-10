@@ -42,6 +42,7 @@
     <Compile Include="Devices\ArduinoInputDevice.cs" />
     <Compile Include="Devices\StubArduinoDevice.cs" />
     <Compile Include="Parsers\ArduinoRemoteCommandParser.cs" />
+    <Compile Include="Parsers\SimpleStringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

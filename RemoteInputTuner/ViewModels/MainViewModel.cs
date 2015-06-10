@@ -22,7 +22,7 @@ namespace RemoteInputTuner.ViewModels
         private readonly ObservableCollection<SerialPortModel> _serialPorts;
         private readonly ObservableCollection<RemoteCommandBinding> _commandBindings;
         private SerialPortModel _serialPort;
-        private string _currentRemoteCommand;
+        private RemoteCommand? _currentRemoteCommand;
 
         #endregion
 
@@ -82,7 +82,7 @@ namespace RemoteInputTuner.ViewModels
         /// <summary>
         /// Current remote command for binding
         /// </summary>
-        public string CurrentRemoteCommand
+        public RemoteCommand? CurrentRemoteCommand
         {
             get
             {

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="RemoteInputTuner.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Remote Input Tuner" Height="350" Width="525" KeyDown="Window_KeyDown">
+        Title="Remote Input Tuner" Height="350" Width="525" KeyDown="Window_KeyDown" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>

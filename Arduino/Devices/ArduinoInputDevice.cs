@@ -46,6 +46,7 @@ namespace Arduino.Devices
                 _port.Open();
                 _isOpened = true;
                 _readingThread = new Thread(ReadInformationFromDevice);
+                _readingThread.IsBackground = true;
                 _readingThread.Start();
             }
             catch (Exception ex)

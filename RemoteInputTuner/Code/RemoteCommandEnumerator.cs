@@ -15,7 +15,7 @@ namespace RemoteInputTuner.Code
     {
         #region Private Fields
 
-        private List<string> _remoteCommands;
+        private List<RemoteCommand> _remoteCommands;
         private int _currentRemoteCommandIndex = 0;
 
         #endregion
@@ -24,7 +24,7 @@ namespace RemoteInputTuner.Code
 
         public RemoteCommandEnumerator()
         {
-            _remoteCommands = EnumHelpers.GetAvailableEnumValues<RemoteCommand>().Select(t => t.Item1).ToList();
+            _remoteCommands = EnumHelpers.GetAvailableEnumValues<RemoteCommand>().Select(t => (RemoteCommand)t.Item2).ToList();
             _currentRemoteCommandIndex = 0;
         }
 
@@ -36,7 +36,7 @@ namespace RemoteInputTuner.Code
         /// Returns next available remote command
         /// </summary>
         /// <returns>String representation of the next remote command; null - if all remote commands have been enumerated</returns>
-        public string GetNext()
+        public RemoteCommand? GetNext()
         {
             if (_currentRemoteCommandIndex >= _remoteCommands.Count)
                 return null;

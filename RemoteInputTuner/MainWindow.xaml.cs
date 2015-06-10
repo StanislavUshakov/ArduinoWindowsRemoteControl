@@ -1,4 +1,6 @@
-﻿using Core.Interfaces;
+﻿using Arduino.Devices;
+using Arduino.Parsers;
+using Core.Interfaces;
 using RemoteInputTuner.Code;
 using RemoteInputTuner.ViewModels;
 using System;
@@ -27,6 +29,7 @@ namespace RemoteInputTuner
 
         private MainViewModel _mainViewModel;
         private RemoteCommandEnumerator _remoteCommandEnumerator;
+        private IRemoteInputDevice<string> _arduinoDevice;
 
         #endregion
 
@@ -47,23 +50,53 @@ namespace RemoteInputTuner
 
         private void ConnectButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_mainViewModel.CurrentSerialPort.Name);
-            _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
+            try
+            {
+                _arduinoDevice = new ArduinoInputDevice<string>(_mainViewModel.CurrentSerialPort.Name);
+                _arduinoDevice.Open(new SimpleStringParser());
+                _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to connect to " + _mainViewModel.CurrentSerialPort.Name + Environment.NewLine + ex.Message);               
+            }            
         }
         
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Tab)
+            if (_arduinoDevice != null && _arduinoDevice.IsOpened && e.Key == Key.Tab)
             {
-                string nextCommand = _remoteCommandEnumerator.GetNext();
-                if (nextCommand == null)
-                    MessageBox.Show("All remote commands were associated.");
-                _mainViewModel.CurrentRemoteCommand = nextCommand;
-
+                ShowNextCommand();
                 e.Handled = true;
             }
         }
 
-        #endregion
+        private void MessageReceived(string message)
+        {
+            if (_mainViewModel.CurrentRemoteCommand.HasValue)
+            {
+                _mainViewModel.CommandBindings.Add(new Models.RemoteCommandBinding(message, _mainViewModel.CurrentRemoteCommand.Value));
+                ShowNextCommand();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                _arduinoDevice.Close();
+            }
+            catch { }
+        }
+
+        private void ShowNextCommand()
+        {
+            RemoteCommand? nextCommand = _remoteCommandEnumerator.GetNext();
+            if (nextCommand == null)
+                MessageBox.Show("All remote commands were associated.");
+            _mainViewModel.CurrentRemoteCommand = nextCommand;
+        }
+
+        #endregion        
     }
 }

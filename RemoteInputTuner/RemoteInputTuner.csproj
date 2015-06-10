@@ -99,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Arduino\Arduino.csproj">
+      <Project>{5a1b739e-6800-42e9-bd59-17e10bf9469e}</Project>
+      <Name>Arduino</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{524ffe67-56fb-4513-a199-d410998597df}</Project>
       <Name>Core</Name>
