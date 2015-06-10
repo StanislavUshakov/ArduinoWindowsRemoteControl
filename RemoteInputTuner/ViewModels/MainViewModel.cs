@@ -21,7 +21,6 @@ namespace RemoteInputTuner.ViewModels
 
         private readonly ObservableCollection<SerialPortModel> _serialPorts;
         private SerialPortModel _serialPort;
-        private List<string> _remoteCommands;
         private string _currentRemoteCommand;
 
         #endregion
