@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Code\RemoteCommandEnumerator.cs" />
+    <Compile Include="Models\RemoteCommandBinding.cs" />
     <Compile Include="Models\SerialPortModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ObservableCollection.cs" />

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RemoteInputTuner.Models
 {
+    /// <summary>
+    /// Model for stroing serial port information - name
+    /// </summary>
     public class SerialPortModel
     {
         #region Constructor

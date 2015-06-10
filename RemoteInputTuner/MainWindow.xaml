@@ -19,5 +19,14 @@
         <TextBlock  Grid.Row="1" Grid.Column="0" FontSize="38" TextAlignment="Center" Text="Press key"></TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" FontSize="34" TextAlignment="Center" Margin="0, 100, 0, 0" Text="{Binding Path=CurrentRemoteCommand}"></TextBlock>
         <TextBlock Grid.Row="1" Grid.Column="0" FontSize="25" TextAlignment="Center" Margin="0, 210, 0, 0" Text="(Tab to skip)"></TextBlock>
+        <ListView Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="260" VerticalAlignment="Top" Width="249" ItemsSource="{Binding Path=CommandBindings}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="80" Header="HEX Code" DisplayMemberBinding="{Binding Path=HexCode}"/>
+                    <GridViewColumn Width="150" Header="Remote Command" DisplayMemberBinding="{Binding Path=RemoteCommand}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

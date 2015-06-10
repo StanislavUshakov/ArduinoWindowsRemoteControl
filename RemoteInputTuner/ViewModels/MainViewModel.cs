@@ -20,6 +20,7 @@ namespace RemoteInputTuner.ViewModels
         #region Private Fields
 
         private readonly ObservableCollection<SerialPortModel> _serialPorts;
+        private readonly ObservableCollection<RemoteCommandBinding> _commandBindings;
         private SerialPortModel _serialPort;
         private string _currentRemoteCommand;
 
@@ -31,11 +32,14 @@ namespace RemoteInputTuner.ViewModels
         {
             var ports = SerialPort.GetPortNames().Select(s => new SerialPortModel(s));
             _serialPorts = new ObservableCollection<SerialPortModel>();
+            _commandBindings = new ObservableCollection<RemoteCommandBinding>();
             
             foreach (var port in ports)
                 _serialPorts.Add(port);
 
             _serialPort = ports.FirstOrDefault();
+
+            _commandBindings.Add(new RemoteCommandBinding("ox456745", RemoteCommand.USD));
         }
 
         #endregion
@@ -48,6 +52,14 @@ namespace RemoteInputTuner.ViewModels
         public ObservableCollection<SerialPortModel> SerialPorts
         {
             get { return _serialPorts; }
+        }
+
+        /// <summary>
+        /// Created command bindings
+        /// </summary>
+        public ObservableCollection<RemoteCommandBinding> CommandBindings
+        {
+            get { return _commandBindings; }
         }
 
         /// <summary>
