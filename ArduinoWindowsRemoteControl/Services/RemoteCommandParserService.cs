@@ -40,7 +40,7 @@ namespace ArduinoWindowsRemoteControl.Services
 
         public void SaveArduinoCommandParser(ArduinoRemoteCommandParser commandParser, string filename)
         {
-
+            _dictionaryRepository.Save(commandParser.CommandsMapping, filename);
         }
 
         #endregion
