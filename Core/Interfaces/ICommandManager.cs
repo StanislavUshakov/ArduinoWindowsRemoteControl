@@ -44,5 +44,10 @@ namespace Core.Interfaces
         /// Delete all commands
         /// </summary>
         void DeleteAllCommands();
+
+        /// <summary>
+        /// Gets IRemoteInputDevice object associated with ICommandManager
+        /// </summary>
+        IRemoteInputDevice InputDeice { get; }
     }
 }

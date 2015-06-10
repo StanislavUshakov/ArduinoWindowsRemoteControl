@@ -32,7 +32,7 @@ namespace ArduinoWindowsRemoteControl.Windows
 
         #endregion
 
-        #region Public Methods
+        #region ICommandManager Members
 
         public bool AddNewCommandForApplication(string applicationName, RemoteCommand remoteCommand, string command)
         {
@@ -57,6 +57,14 @@ namespace ArduinoWindowsRemoteControl.Windows
         public void DeleteAllCommands()
         {
             _commandDispatcher.DeleteAllCommands();
+        }
+
+        public IRemoteInputDevice InputDeice
+        {
+            get
+            {
+                return _arduinoDevice;
+            }
         }
 
         #endregion
