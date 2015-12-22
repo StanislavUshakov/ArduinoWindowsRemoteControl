@@ -48,6 +48,6 @@ namespace Core.Interfaces
         /// <summary>
         /// Gets IRemoteInputDevice object associated with ICommandManager
         /// </summary>
-        IRemoteInputDevice<RemoteCommand> InputDeice { get; }
+        IRemoteInputDevice<RemoteCommand> InputDevice { get; }
     }
 }

@@ -32,7 +32,6 @@ namespace Arduino.Devices
 
         public event Action<RemoteCommand> CommandReceived;
 
-
         public void Open(IRemoteCommandParser<RemoteCommand> commandParser) { }
 
         public void Close() { }

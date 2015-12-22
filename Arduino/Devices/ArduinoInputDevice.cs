@@ -84,8 +84,7 @@ namespace Arduino.Devices
             {
                 string command = _port.ReadLine();
                 var remoteCommand = _commandParser.Parse(command);
-                if (CommandReceived != null)
-                    CommandReceived(remoteCommand);
+                CommandReceived?.Invoke(remoteCommand);
             }
         }
 

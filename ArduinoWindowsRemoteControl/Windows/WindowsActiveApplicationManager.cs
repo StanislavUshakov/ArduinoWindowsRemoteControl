@@ -59,7 +59,7 @@ namespace ArduinoWindowsRemoteControl.Windows
             _commandDispatcher.DeleteAllCommands();
         }
 
-        public IRemoteInputDevice<RemoteCommand> InputDeice
+        public IRemoteInputDevice<RemoteCommand> InputDevice
         {
             get
             {

@@ -53,6 +53,7 @@ namespace RemoteInputTuner
             try
             {
                 _arduinoDevice = new ArduinoInputDevice<string>(_mainViewModel.CurrentSerialPort.Name);
+                _arduinoDevice.CommandReceived += MessageReceived;
                 _arduinoDevice.Open(new SimpleStringParser());
                 _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
             }
