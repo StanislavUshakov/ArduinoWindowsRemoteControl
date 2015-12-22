@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Services
+namespace Services
 {
     /// <summary>
     /// Service that returns parsers for different remote input devices

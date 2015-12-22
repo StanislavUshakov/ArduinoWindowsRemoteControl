@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArduinoWindowsRemoteControl.Services
+namespace Services
 {
     /// <summary>
     /// Represents service that is responsible for saving/loading application commands
