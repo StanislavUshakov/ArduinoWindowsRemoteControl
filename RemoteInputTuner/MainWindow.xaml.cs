@@ -1,6 +1,7 @@
 ﻿using Arduino.Devices;
 using Arduino.Parsers;
 using Core.Interfaces;
+using Microsoft.Win32;
 using RemoteInputTuner.Code;
 using RemoteInputTuner.ViewModels;
 using System;
@@ -64,7 +65,22 @@ namespace RemoteInputTuner
                 MessageBox.Show("Failed to connect to " + _mainViewModel.CurrentSerialPort.Name + Environment.NewLine + ex.Message);               
             }            
         }
-        
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = "Remote Commands";
+            dlg.DefaultExt = ".rmc";
+            dlg.Filter = "Remote Commands (.rmc)|*.rmc";
+
+            bool? result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+            }
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (_arduinoDevice != null && _arduinoDevice.IsOpened && e.Key == Key.Tab)
@@ -96,10 +112,13 @@ namespace RemoteInputTuner
         {
             RemoteCommand? nextCommand = _remoteCommandEnumerator.GetNext();
             if (nextCommand == null)
+            {
                 MessageBox.Show("All remote commands were associated.");
+                Dispatcher.Invoke(() => btSave.Visibility = Visibility.Visible);
+            }
             _mainViewModel.CurrentRemoteCommand = nextCommand;
         }
 
-        #endregion        
+        #endregion
     }
 }
