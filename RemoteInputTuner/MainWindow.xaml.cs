@@ -56,6 +56,8 @@ namespace RemoteInputTuner
                 _arduinoDevice.CommandReceived += MessageReceived;
                 _arduinoDevice.Open(new SimpleStringParser());
                 _mainViewModel.CurrentRemoteCommand = _remoteCommandEnumerator.GetNext();
+                btConnect.IsEnabled = false;
+                cbPort.IsEnabled = false;
             }
             catch (Exception ex)
             {
@@ -76,7 +78,7 @@ namespace RemoteInputTuner
         {
             if (_mainViewModel.CurrentRemoteCommand.HasValue)
             {
-                _mainViewModel.CommandBindings.Add(new Models.RemoteCommandBinding(message, _mainViewModel.CurrentRemoteCommand.Value));
+                Dispatcher.Invoke(() => _mainViewModel.CommandBindings.Add(new Models.RemoteCommandBinding(message, _mainViewModel.CurrentRemoteCommand.Value)));
                 ShowNextCommand();
             }
         }

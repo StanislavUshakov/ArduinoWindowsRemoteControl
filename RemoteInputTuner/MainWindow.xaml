@@ -23,7 +23,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="80" Header="HEX Code" DisplayMemberBinding="{Binding Path=HexCode}"/>
-                    <GridViewColumn Width="150" Header="Remote Command" DisplayMemberBinding="{Binding Path=RemoteCommand}"/>
+                    <GridViewColumn Width="140" Header="Remote Command" DisplayMemberBinding="{Binding Path=RemoteCommand}"/>
                 </GridView>
             </ListView.View>
         </ListView>

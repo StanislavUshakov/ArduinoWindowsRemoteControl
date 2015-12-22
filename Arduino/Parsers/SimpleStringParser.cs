@@ -16,7 +16,7 @@ namespace Arduino.Parsers
 
         public string Parse(string command)
         {
-            return command;
+            return command.Trim();
         }
 
         #endregion

@@ -38,8 +38,6 @@ namespace RemoteInputTuner.ViewModels
                 _serialPorts.Add(port);
 
             _serialPort = ports.FirstOrDefault();
-
-            _commandBindings.Add(new RemoteCommandBinding("ox456745", RemoteCommand.USD));
         }
 
         #endregion

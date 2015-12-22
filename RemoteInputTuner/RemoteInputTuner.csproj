@@ -58,7 +58,6 @@
     <Compile Include="Models\RemoteCommandBinding.cs" />
     <Compile Include="Models\SerialPortModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ObservableCollection.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
