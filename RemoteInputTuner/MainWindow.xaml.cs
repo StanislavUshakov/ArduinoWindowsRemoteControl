@@ -4,20 +4,11 @@ using Core.Interfaces;
 using Microsoft.Win32;
 using RemoteInputTuner.Code;
 using RemoteInputTuner.ViewModels;
+using Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RemoteInputTuner
 {
@@ -31,6 +22,7 @@ namespace RemoteInputTuner
         private MainViewModel _mainViewModel;
         private RemoteCommandEnumerator _remoteCommandEnumerator;
         private IRemoteInputDevice<string> _arduinoDevice;
+        private RemoteCommandParserPersistentService _remoteCommandParserPersistentService;
 
         #endregion
 
@@ -43,6 +35,7 @@ namespace RemoteInputTuner
             DataContext = _mainViewModel;
 
             _remoteCommandEnumerator = new RemoteCommandEnumerator();
+            _remoteCommandParserPersistentService = new RemoteCommandParserPersistentService();
         }
 
         #endregion
@@ -78,6 +71,9 @@ namespace RemoteInputTuner
             if (result == true)
             {
                 string filename = dlg.FileName;
+                var commandMapping = _mainViewModel.CommandBindings.ToDictionary(b => b.HexCode, b => b.RemoteCommand);
+                ArduinoRemoteCommandParser parser = new ArduinoRemoteCommandParser(commandMapping);
+                _remoteCommandParserPersistentService.SaveArduinoCommandParser(parser, filename);
             }
         }
 

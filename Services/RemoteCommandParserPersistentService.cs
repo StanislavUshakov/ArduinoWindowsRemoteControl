@@ -13,7 +13,7 @@ namespace Services
     /// <summary>
     /// Service that returns parsers for different remote input devices
     /// </summary>
-    public class RemoteCommandParserService
+    public class RemoteCommandParserPersistentService
     {
         #region Private Fields
 
@@ -23,7 +23,7 @@ namespace Services
 
         #region Constructor
 
-        public RemoteCommandParserService()
+        public RemoteCommandParserPersistentService()
         {
             _dictionaryRepository = new DictionaryRepository();
         }
