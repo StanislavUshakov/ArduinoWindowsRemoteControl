@@ -93,13 +93,13 @@ namespace ArduinoWindowsRemoteControl
 
         private void btChangeCommandMapping_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Remote Commands (.rmc)|*.rmc";
-            openFileDialog1.Multiselect = false;
+            openFileWithRemoteCommandsMapping.Filter = "Remote Commands (.rmc)|*.rmc";
+            openFileWithRemoteCommandsMapping.Multiselect = false;
 
-            var result = openFileDialog1.ShowDialog();
+            var result = openFileWithRemoteCommandsMapping.ShowDialog();
             if (result == DialogResult.OK)
             {
-                _remoteCommandsMappingFilename = openFileDialog1.FileName;
+                _remoteCommandsMappingFilename = openFileWithRemoteCommandsMapping.FileName;
                 lbRemoteCommandsFilename.Text = Path.GetFileName(_remoteCommandsMappingFilename);
             }
         }

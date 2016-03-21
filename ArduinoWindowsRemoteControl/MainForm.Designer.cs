@@ -40,7 +40,7 @@
             this.lbRemoteCommandsDescription = new System.Windows.Forms.Label();
             this.lbRemoteCommandsFilename = new System.Windows.Forms.Label();
             this.btChangeCommandMapping = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileWithRemoteCommandsMapping = new System.Windows.Forms.OpenFileDialog();
             this.gbStatus.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,10 +148,6 @@
             this.btChangeCommandMapping.UseVisualStyleBackColor = true;
             this.btChangeCommandMapping.Click += new System.EventHandler(this.btChangeCommandMapping_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,7 +185,7 @@
         private System.Windows.Forms.Label lbRemoteCommandsDescription;
         private System.Windows.Forms.Button btChangeCommandMapping;
         private System.Windows.Forms.Label lbRemoteCommandsFilename;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileWithRemoteCommandsMapping;
     }
 }
 
