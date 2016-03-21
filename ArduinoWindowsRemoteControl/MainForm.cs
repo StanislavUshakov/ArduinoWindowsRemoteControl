@@ -15,18 +15,22 @@ namespace ArduinoWindowsRemoteControl
         private CommandUILayout _UILayout;
         private EditCommandForm _editForm;
         private ApplicationCommandPersistentService _persistentService;
+        private IRemoteInputDevice<RemoteCommand> _remoteDevice;
 
         #endregion
 
         #region Constructor
 
-        public MainForm(ICommandManager commandManager, ApplicationCommandPersistentService persistentService, EditCommandForm editForm)
+        public MainForm(ICommandManager commandManager, ApplicationCommandPersistentService persistentService, EditCommandForm editForm,
+            IRemoteInputDevice<RemoteCommand> remoteDevice)
         {
             InitializeComponent();
+
             _commandManager = commandManager;
             _persistentService = persistentService;
             _UILayout = new CommandUILayout(commandListPanel, mainTooltip);
             _editForm = editForm;
+            _remoteDevice = remoteDevice;
 
             _persistentService.Load(_commandManager);
 
@@ -105,6 +109,6 @@ namespace ArduinoWindowsRemoteControl
             _UILayout.ShowCommandsForApplication(_commandManager.GetCommandsForApplication(appName), remove_Click, edit_Click);
         }
 
-        #endregion        
+        #endregion
     }
 }
