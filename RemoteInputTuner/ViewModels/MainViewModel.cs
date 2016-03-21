@@ -73,7 +73,7 @@ namespace RemoteInputTuner.ViewModels
             {
                 if (_serialPort == value) return;
                 _serialPort = value;
-                OnPropertyChanged("CurrentSerialPort");
+                OnPropertyChanged(nameof(CurrentSerialPort));
             }
         }
 
@@ -90,7 +90,7 @@ namespace RemoteInputTuner.ViewModels
             {
                 if (_currentRemoteCommand == value) return;
                 _currentRemoteCommand = value;
-                OnPropertyChanged("CurrentRemoteCommand");
+                OnPropertyChanged(nameof(CurrentRemoteCommand));
             }
         }
 
