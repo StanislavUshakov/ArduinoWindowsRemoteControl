@@ -2,6 +2,7 @@
 using Core.Interfaces;
 using Services;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ArduinoWindowsRemoteControl
@@ -11,6 +12,7 @@ namespace ArduinoWindowsRemoteControl
         #region Private Fields
 
         private string _currentAppplicationName;
+        private string _remoteCommandsMappingFilename;
         private ICommandManager _commandManager;
         private CommandUILayout _UILayout;
         private EditCommandForm _editForm;
@@ -86,6 +88,20 @@ namespace ArduinoWindowsRemoteControl
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _persistentService.Save(_commandManager);
+        }
+
+
+        private void btChangeCommandMapping_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Remote Commands (.rmc)|*.rmc";
+            openFileDialog1.Multiselect = false;
+
+            var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                _remoteCommandsMappingFilename = openFileDialog1.FileName;
+                lbRemoteCommandsFilename.Text = Path.GetFileName(_remoteCommandsMappingFilename);
+            }
         }
 
         #endregion

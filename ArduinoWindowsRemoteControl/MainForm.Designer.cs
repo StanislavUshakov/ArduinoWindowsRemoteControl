@@ -36,6 +36,12 @@
             this.lbApplication = new System.Windows.Forms.Label();
             this.cbApplication = new System.Windows.Forms.ComboBox();
             this.tbNewAppName = new System.Windows.Forms.TextBox();
+            this.gbStatus = new System.Windows.Forms.GroupBox();
+            this.lbRemoteCommandsDescription = new System.Windows.Forms.Label();
+            this.lbRemoteCommandsFilename = new System.Windows.Forms.Label();
+            this.btChangeCommandMapping = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.gbStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // btAddNew
@@ -101,11 +107,57 @@
             this.tbNewAppName.Size = new System.Drawing.Size(179, 22);
             this.tbNewAppName.TabIndex = 4;
             // 
+            // gbStatus
+            // 
+            this.gbStatus.Controls.Add(this.btChangeCommandMapping);
+            this.gbStatus.Controls.Add(this.lbRemoteCommandsFilename);
+            this.gbStatus.Controls.Add(this.lbRemoteCommandsDescription);
+            this.gbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gbStatus.Location = new System.Drawing.Point(5, 298);
+            this.gbStatus.Name = "gbStatus";
+            this.gbStatus.Size = new System.Drawing.Size(694, 80);
+            this.gbStatus.TabIndex = 6;
+            this.gbStatus.TabStop = false;
+            this.gbStatus.Text = "Status";
+            // 
+            // lbRemoteCommandsDescription
+            // 
+            this.lbRemoteCommandsDescription.AutoSize = true;
+            this.lbRemoteCommandsDescription.Location = new System.Drawing.Point(7, 16);
+            this.lbRemoteCommandsDescription.Name = "lbRemoteCommandsDescription";
+            this.lbRemoteCommandsDescription.Size = new System.Drawing.Size(209, 15);
+            this.lbRemoteCommandsDescription.TabIndex = 0;
+            this.lbRemoteCommandsDescription.Text = "Current remote commands mapping:";
+            // 
+            // lbRemoteCommandsFilename
+            // 
+            this.lbRemoteCommandsFilename.AutoSize = true;
+            this.lbRemoteCommandsFilename.Location = new System.Drawing.Point(215, 16);
+            this.lbRemoteCommandsFilename.Name = "lbRemoteCommandsFilename";
+            this.lbRemoteCommandsFilename.Size = new System.Drawing.Size(42, 15);
+            this.lbRemoteCommandsFilename.TabIndex = 1;
+            this.lbRemoteCommandsFilename.Text = "NONE";
+            // 
+            // btChangeCommandMapping
+            // 
+            this.btChangeCommandMapping.Location = new System.Drawing.Point(609, 11);
+            this.btChangeCommandMapping.Name = "btChangeCommandMapping";
+            this.btChangeCommandMapping.Size = new System.Drawing.Size(79, 24);
+            this.btChangeCommandMapping.TabIndex = 2;
+            this.btChangeCommandMapping.Text = "Change";
+            this.btChangeCommandMapping.UseVisualStyleBackColor = true;
+            this.btChangeCommandMapping.Click += new System.EventHandler(this.btChangeCommandMapping_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 299);
+            this.ClientSize = new System.Drawing.Size(704, 379);
+            this.Controls.Add(this.gbStatus);
             this.Controls.Add(this.btAddNewApplication);
             this.Controls.Add(this.tbNewAppName);
             this.Controls.Add(this.cbApplication);
@@ -117,6 +169,8 @@
             this.Name = "MainForm";
             this.Text = "Windows Remote Control Center";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.gbStatus.ResumeLayout(false);
+            this.gbStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +185,11 @@
         private System.Windows.Forms.ComboBox cbApplication;
         private System.Windows.Forms.TextBox tbNewAppName;
         private System.Windows.Forms.Button btAddNewApplication;
+        private System.Windows.Forms.GroupBox gbStatus;
+        private System.Windows.Forms.Label lbRemoteCommandsDescription;
+        private System.Windows.Forms.Button btChangeCommandMapping;
+        private System.Windows.Forms.Label lbRemoteCommandsFilename;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
